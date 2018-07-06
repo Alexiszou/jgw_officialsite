@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>预订房间</title>
+    <link rel="icon" href="../image/web/favicon.ico" type="image/ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="../vendors/bootstrap/bootstrap-3.3.7/css/bootstrap.min.css">
+    <script type="text/javascript" src="../vendors/jquery/jquery-3.3.1/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="../vendors/bootstrap/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../vendors/angular/angular-1.4.6/angular.min.js"></script>
+    <script type="text/javascript" src="../js/common.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/web/common.css">
+    <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=fD9wbW6Vh4xNwoOWVHhGAoHSGBDMN789"></script>
+    <style type="text/css">
+        body{
+            font:18px/30px Microsoft YaHei;
+        }
+        .houseType{
+            padding: 0;
+            margin: 0;
+        }
+        .houseType li{
+            margin-right: 30px;
+        }
+        .houseType a{
+            color: #1a1a1a;
+            text-decoration: none;
+        }
+        .houseType a:hover{
+            color: #ffb901;
+        }
+        .houseType a.active{
+            color: #ffb901;
+        }
+
+        .mthumbnail{
+            width: 162px;
+            height:120px;
+            margin: 0 10px 10px;
+        }
+
+        .mthumbnail.active{
+            border: 4px solid #ffb901;
+        }
+
+        .look{
+            background-color: #ffb901;
+            color: #ffffff;
+            border-radius: 10px;
+            width: 100%;
+            outline: none;
+            /*border-color:transparent;*/
+        }
+        .collect{
+            background-color: transparent;
+            color: #737373;
+            border-radius: 10px;
+            width: 100%;
+            outline: none;
+
+        }
+        .dial{
+            background-color: #313131;
+            color: #ffb901;
+            border-radius: 10px;
+            width: 100%;
+            outline: none;
+        }
+
+        .around li a{
+            text-decoration: none;
+            color: #1a1a1a;
+            margin-right: 42px;
+            padding-bottom: 5px;
+        }
+        .around li a:hover{
+            color: #ffb901;
+            text-decoration: none;
+            border-bottom: 4px solid #ffb901;
+        }
+        .around li a.active{
+            color: #ffb901;
+            border-bottom: 4px solid #ffb901;
+        }
+        #mapContainer{
+            width: 100%;
+            height:500px;
+        }
+
+        /*.shadow{
+            position: fixed;
+            left: 0;
+            top: 0;
+            width:100%;
+            height: 100%;
+            background: rgba(0,0,0,.5);
+            z-index: 5;
+
+        }*/
+
+
+    </style>
+
+    <script type="text/javascript">
+        var app = angular.module('myApp',[]);
+        app.controller('myCtrl', function($scope,$http) {
+            var branchName = decodeURI(getUrlParam("name"));
+            var type = decodeURI(getUrlParam("type"))
+
+            var selectImgIndex = 0;
+            $scope.reserveItem = reserveList[0];
+            $scope.reserveType = $scope.reserveItem.type[1];
+            //type = $scope.reserveType.name
+            for(var i=0;i<reserveList.length;i++){
+                if(reserveList[i].branchName == branchName){
+                    $scope.reserveItem = reserveList[i];
+                }
+            }
+
+            $scope.reserveItem.type.forEach(function (item,index,array) {
+                //console.log("this.name:"+this.name)
+                if(item.name == type){
+                    $scope.reserveType = item
+                }
+            })
+            //$scope.reserveType = $scope.reserveItem.type[0];
+            $scope.selectImage = $scope.reserveType.images[selectImgIndex];
+
+
+
+            $scope.furnitureList = [
+                {
+                    "img":"../image/web/index_06_bed.png",
+                    "name":"床"
+                },
+                {
+                    "img":"../image/web/index_06_chest.png",
+                    "name":"密码柜"
+                },
+                {
+                    "img":"../image/web/index_06_sofa.png",
+                    "name":"沙发"
+                },
+                {
+                    "img":"../image/web/index_06_desk.png",
+                    "name":"书桌"
+                },
+                {
+                    "img":"../image/web/index_06_xiyiji.png",
+                    "name":"洗衣机"
+                },
+                {
+                    "img":"../image/web/index_06_wifi.png",
+                    "name":"WIFI"
+                },
+                {
+                    "img":"../image/web/index_06_shower.png",
+                    "name":"热水器"
+                },
+                {
+                    "img":"../image/web/index_06_binxiang.png",
+                    "name":"冰箱"
+                },
+                {
+                    "img":"../image/web/index_06_door.png",
+                    "name":"智能门锁"
+                },
+                {
+                    "img":"../image/web/index_06_toilet.png",
+                    "name":"独立卫浴"
+                },
+            ]
+
+            $scope.showType = function (event,index) {
+                $(".houseType li a").removeClass("active")
+                $(event.target).addClass("active")
+                /*switch (index){
+                    case 0:
+                        $scope.reserveType = $scope.reserveItem.type[0];
+                        break;
+                    case 1:
+                        $scope.reserveType = $scope.reserveItem.type[1];
+                        break;
+                    case 2:
+                        $scope.reserveType = $scope.reserveItem.type[2];
+                        break;
+                    case 3:
+                        $scope.reserveType = $scope.reserveItem.type[3];
+                        break;
+                }*/
+                $scope.reserveType = $scope.reserveItem.type[index];
+                $scope.selectImage = $scope.reserveType.images[0];
+            }
+
+            $scope.selectImg = function (index) {
+                //console.log("index:"+index)
+                $("[id^='mthumbnail']").removeClass("active")
+                //console.log("length:"+$("[id^='mthumbnail"+index+"']").length)
+                $("[id^='mthumbnail"+index+"']").addClass("active")
+                $scope.selectImage = $scope.reserveType.images[index];
+
+            }
+
+            addMap($scope.reserveItem.baiduMap.Lng,$scope.reserveItem.baiduMap.Lat)
+
+            $(".houseType li a").each(function () {
+                //console.log($(this).text())
+                if($(this).text() == $scope.reserveType.name){
+                    $(this).addClass("active")
+                }
+            })
+
+            $scope.showAround = function (event) {
+                //console.log("event:"+$(event.target).text())
+                var text = $(event.target).text();
+                if(text == "当前房源"){
+                    addMap($scope.reserveItem.baiduMap.Lng,$scope.reserveItem.baiduMap.Lat)
+                }else{
+                    searchNearby($scope.reserveItem.baiduMap.Lng,$scope.reserveItem.baiduMap.Lat,text)
+                }
+                $(".around li a").removeClass("active")
+                $(event.target).addClass("active")
+            }
+
+            $scope.showReserveDialog = function () {
+                $("#reserveDialog").show();
+            }
+            $scope.closeDialog = function () {
+                $("#reserveDialog").hide();
+            }
+            $scope.reserver = {
+                fullname:"",
+                phone:"",
+                type:0,
+                date:new Date(),
+                apartment:0
+            };
+            $scope.addReserver = function () {
+                if($scope.reserver.fullname == null || $scope.reserver.fullname.trim() == ""){
+                    alert("请输入姓名");
+                    return;
+                }
+                if($scope.reserver.phone == null || $scope.reserver.phone.trim() == ""){
+                    alert("请输入手机号码");
+                    return;
+                }
+                $scope.reserver.type = $("#reserverType").val();
+                var index = $("#reserverApartment").prop('selectedIndex')
+                console.log("index:"+index);
+                $scope.reserver.apartment = $scope.apartmentList[index].value;
+                //$scope.reserver.apartment = $scope.reserverApartment.value;
+                //console.log("reserve:"+$.param($scope.reserver));
+
+                httpRequest($http,METHOD_POST,'/reserve',$scope.reserver,null,CONTENT_TYPE_JSON,
+                    function callback(data){
+                        $scope.closeDialog();
+                        alert("预约成功，稍后会有客服人员联系您，请保持电话畅通。")
+
+                    });
+            }
+
+            /*var map = {
+                id:1
+            }*/
+
+            httpRequest($http,METHOD_GET,'/apartment',null,null,CONTENT_TYPE_STRING,
+                function callback(data){
+                    $scope.apartmentList = data;
+                    $scope.reserverApartment = data[0];
+                });
+
+        });
+
+
+        function addMap(lng,lat) {
+            // 创建地图实例
+            var map = new BMap.Map("mapContainer");
+            // 创建点坐标
+            var point = new BMap.Point(lng,lat);
+            // 初始化地图，设置中心点坐标和地图级别
+            map.centerAndZoom(point, 18);
+            map.addOverlay(new BMap.Marker(point));
+            map.enableScrollWheelZoom();
+
+            /*var local = new BMap.LocalSearch(map, {
+                renderOptions:{map: map}
+            });
+            local.searchNearby("电影院", new BMap.Point(lng, lat),800);*/
+        }
+
+        function searchNearby(lng,lat,search) {
+            // 创建地图实例
+            var map = new BMap.Map("mapContainer");
+            // 创建点坐标
+            var point = new BMap.Point(lng,lat);
+            map.centerAndZoom(point, 18);
+            map.addOverlay(new BMap.Marker(point));
+            map.enableScrollWheelZoom();
+            var local = new BMap.LocalSearch(map, {
+                renderOptions:{map: map}
+            });
+            local.searchNearby(search, point,1000);
+        }
+
+        $(function () {
+            //$("[id^='mthumbnail"+0+"']").addClass("active")
+        })
+    </script>
+</head>
+<body>
+
+<div class="container-fluid" ng-app="myApp" ng-controller="myCtrl">
+    <div class="row" ng-include="'header.html'"></div>
+
+    <div class="row myBlock">
+        <p id="navTitle" class="p3 navTitle">首页>{{reserveItem.apartName}}>{{reserveItem.branchName}}>{{reserveType.name}}</p>
+        <div class="myFrame horizontal" style="justify-content: flex-start;padding: 0px 10px;border-radius: 10px">
+            <p class="p2">居室：</p>
+            <ul class="horizontal houseType">
+                <li><a href="javascript:;" ng-click="showType($event,0)">单人间</a></li>
+                <li><a href="javascript:;" ng-click="showType($event,1)">四人间</a></li>
+                <li><a href="javascript:;" ng-click="showType($event,2)">六人间</a></li>
+                <li><a href="javascript:;" ng-click="showType($event,3)">八人间</a></li>
+            </ul>
+        </div>
+        <div class="horizontal" style="align-items:flex-start;border-top: 2px solid #dcdcdc;padding: 14px 0;margin-top: 14px;">
+
+            <img src="{{selectImage}}">
+            <div style="width: 200px;height: 462px;overflow-y: scroll;margin-right: 10px">
+
+                <div ng-repeat="x in reserveType.images">
+                    <img id="mthumbnail{{$index}}" ng-click="selectImg($index)" class="mthumbnail" ng-class="{active:$index==0}" src="{{x}}" >
+                </div>
+
+            </div>
+            <div class="p3" style="">
+                <p class="p2">{{reserveItem.apartName}}·{{reserveItem.branchName}}-{{reserveType.name}}</p>
+                <p style="margin-top: 12px;color: #737373">{{reserveItem.address}}</p>
+                <p><span class="p2" style="color:#ffb901;">{{reserveType.price}}</span><span>/月(月付)</span></p>
+                <div class="horizontal" style="justify-content: flex-start;margin: 22px 0 26px">
+                    <span style="margin-right: 10px" ng-repeat="x in reserveItem.desc">
+                            <span class="desc">{{x}}</span>
+                    </span>
+                </div>
+                <ul style="list-style:disc inside;">
+                    <li>面积：{{reserveItem.area}}㎡</li>
+                    <li>朝向：{{reserveItem.orientation}}</li>
+                    <li>交通：{{reserveItem.traffic}}</li>
+                </ul>
+                <div style="margin-top: 22px;">
+                    <button class="look" ng-click="showReserveDialog()"><img src="../image/web/index_06_icon03.png"><span>我要看房</span></button>
+                </div>
+                <div class="horizontal" style="justify-content:flex-start;margin-top: 12px;">
+                    <button class="collect" style="margin-right: 10px"><img src="../image/web/index_06_icon04.png"><span>收藏</span></button>
+                    <button class="collect"><img src="../image/web/index_06_icon05.png"><span>分享</span></button>
+                </div>
+                <div style="margin-top: 12px">
+                    <button class="dial"><img src="../image/web/index_06_icon06.png"><span>4006-212-815</span></button>
+                </div>
+                <!--<p style="margin-top: 26px">面积：{{reserveItem.area}}㎡</p>
+                <p>朝向：{{reserveItem.orientation}}</p>
+                <p>交通：{{reserveItem.traffic}}</p>-->
+            </div>
+        </div>
+
+        <p class="mtitle five">关于此房源</p>
+        <p><span style="color:#1a1a1a;">周边：</span><span style="color: #737373">{{reserveItem.about.around}}</span></p>
+        <p style="margin-top: 38px"><span style="color:#1a1a1a;">交通：</span><span style="color: #737373">{{reserveItem.about.traffic}}</span></p>
+
+        <p class="mtitle">房屋配置</p>
+        <div class="horizontal" style="justify-content:flex-start;flex-wrap: wrap;text-align: center">
+            <div style="margin-right: 5px" ng-repeat="x in furnitureList">
+                <img class="enlarge" src="{{x.img}}">
+                <p style="color: #737373">{{x.name}}</p>
+            </div>
+        </div>
+        <p class="mtitle">交通周边</p>
+        <ul class="horizontal around" style="justify-content: flex-start;margin-bottom: 20px">
+            <li><a class="active" href="javascript:;" ng-click="showAround($event)">当前房源</a></li>
+            <li><a href="javascript:;" ng-click="showAround($event)">公交</a></li>
+            <li><a href="javascript:;" ng-click="showAround($event)">地铁</a></li>
+            <li><a href="javascript:;" ng-click="showAround($event)">餐饮</a></li>
+            <li><a href="javascript:;" ng-click="showAround($event)">购物</a></li>
+            <li><a href="javascript:;" ng-click="showAround($event)">银行</a></li>
+            <li><a href="javascript:;" ng-click="showAround($event)">超市</a></li>
+            <li><a href="javascript:;" ng-click="showAround($event)">电影院</a></li>
+        </ul>
+        <div id="mapContainer"></div>
+
+    </div>
+
+    <!--<input ng-model="user.fullname" type="text">
+    <button ng-click="addReserve()">add</button>-->
+    <div class="row" ng-include="'footer.html'" ></div>
+    <div id="reserveDialog" ng-include="'reservedialog.html'" hidden></div>
+
+
+</div>
+
+</body>
+</html>

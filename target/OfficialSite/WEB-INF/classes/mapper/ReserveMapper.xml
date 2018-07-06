@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jiageiwo.dao.ReserveDao">
+
+    <resultMap id="ReserveMap" type="com.jiageiwo.bean.ReserveBean">
+    </resultMap>
+    <insert id="addReserve" parameterType="com.jiageiwo.bean.ReserveBean"
+            useGeneratedKeys="true" keyProperty="id" >
+        <!-- mysql插入数据后，获取id -->
+
+        INSERT INTO reserve(fullname,phone,type,date,apartment,genTime)
+        values(#{fullname},#{phone},#{type},
+        #{date},#{apartment},#{genTime})
+    </insert>
+
+    <resultMap id="ApartmentMap" type="com.jiageiwo.bean.Apartment">
+    </resultMap>
+    <select id="getApartmentList"  resultMap="ApartmentMap" parameterType="hashmap">
+        SELECT
+        id,
+        value,
+        name
+        FROM apartment
+        WHERE 1=1
+        <if test="id != null">
+            AND id = #{id}
+        </if>
+        <if test="value != null">
+            AND value = #{value}
+        </if>
+        <if test="name != null">
+            AND name = #{name}
+        </if>
+    </select>
+</mapper>

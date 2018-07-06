@@ -1,0 +1,51 @@
+<header>
+  <div>
+      <ul>
+          <li><img src="../image/web/jiageiwo_yellow.png"></li>
+          <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">深圳
+                  <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                  <li>
+                      <a href="#">深圳</a></li>
+                  <li>
+                  <li class="divider"></li>
+                  <li>
+                      <a href="#">敬请期待</a></li>
+                  <li>
+              </ul>
+          </li>
+          <li><a href="index.html">首页</a></li>
+          <li><a href="cmapartment.html">厘米公寓</a></li>
+          <li><a href="cmservice.html">厘米服务</a></li>
+          <li><a href="about_jiageiwo.html">关于家给我</a></li>
+          <li><a href="coopertaion.html">合作加盟</a></li>
+          <li ><a href="recruitment.html">诚聘英才</a></li>
+          <li ><a href="reserve.html">预订房间</a></li>
+          <!--<div style="margin-left: 50px" hidden>
+              <a href="#">登录</a>
+              <span>|</span>
+              <a href="#">注册</a>
+          </div>-->
+      </ul>
+  </div>
+</header>
+<link rel="stylesheet" type="text/css" href="../css/web/header.css">
+<script type="text/javascript">
+    //console.log(window.location.pathname)
+    //console.log($("ul a").length)
+    $(function () {
+        var pathname = window.location.pathname;
+        pathname = pathname.substring(pathname.lastIndexOf("\/")+1);
+        //console.log(pathname)
+        $("header li a").each(function () {
+            var href = $(this).attr("href");
+            href = href.substring(href.lastIndexOf("\/")+1)
+            //console.log(href)
+            if(pathname == href){
+                $(this).addClass("active")
+            }
+        })
+    })
+
+</script>

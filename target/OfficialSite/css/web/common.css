@@ -1,0 +1,183 @@
+body{
+    font-weight: 500;
+    font-family: "Microsoft YaHei UI";
+}
+a{
+    text-decoration: none;
+    cursor:pointer;
+}
+ul{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+ul li{
+    padding: 0;
+    margin: 0;
+}
+.p1{
+    font-size: 36px;
+    line-height: 60px;
+    padding: 0;
+    margin: 0;
+}
+.p2{
+    font-size: 24px;
+    line-height: 40px;
+    padding: 0;
+    margin: 0;
+}
+.p3{
+    font-size: 18px;
+    line-height: 30px;
+    padding: 0;
+    margin: 0;
+}
+.p4{
+    font-size: 12px;
+    line-height: 20px;
+    padding: 0;
+    margin: 0;
+}
+input{
+    outline: none;
+}
+
+.myFrame{
+    border: 1px solid #dcdcdc;
+    border-radius: 20px;
+}
+
+.content{
+    text-align: center;
+}
+
+.myBlock{
+    width: 85%;
+    margin: 30px auto;
+}
+
+.title{
+    margin-top: 50px;
+    margin-bottom: 50px;
+    font-size:36px;
+    color: #ffb901;
+    text-align: left;
+    position: relative;   /*定位横线（当横线的父元素）*/
+    margin-left: 16%;
+}
+.title:before{
+    content: '';
+    position: absolute;         /*定位背景横线的位置*/
+    top: 50%;
+    left: -10%;
+    background: #ffb901;       /*宽和高做出来的背景横线*/
+    width: 9%;
+    height: 8px;
+}
+
+.title:after{
+    content: '';
+    position: absolute;         /*定位背景横线的位置*/
+    top: 50%;
+    left: 155px;
+    background-image: url("../../image/web/index_02_line01.jpg");       /*宽和高做出来的背景横线*/
+    width: 75%;
+    height: 4px;
+}
+
+.navTitle{
+    position: relative;   /*定位横线（当横线的父元素）*/
+    margin: 0px 0px 30px;
+    padding-left: 20px;
+}
+.navTitle:before{
+    content: '';
+    position: absolute;         /*定位背景横线的位置*/
+    top: 5px;
+    left: 0px;
+    background: #ffb901;       /*宽和高做出来的背景横线*/
+    width: 2px;
+    height: 60%;
+}
+
+.desc{
+    color: #ff6940;
+    font-size: 18px;
+    border: 1px solid #ff6940;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+
+.horizontal{
+    display: -webkit-flex; /* Safari */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.mtitle{
+    margin-top: 50px;
+    margin-bottom: 50px;
+    font-size:36px;
+    color: #ffb901;
+    text-align: left;
+    position: relative;   /*定位横线（当横线的父元素）*/
+    padding-left: 100px;
+}
+.mtitle:before{
+    content: '';
+    position: absolute;         /*定位背景横线的位置*/
+    top: 50%;
+    left: 0;
+    background: #ffb901;       /*宽和高做出来的背景横线*/
+    width: 95px;
+    height: 8px;
+}
+
+.mtitle:after{
+    content: '';
+    position: absolute;         /*定位背景横线的位置*/
+    top: 50%;
+    right: 0;
+    background-image: url("../../image/web/index_02_line01.jpg");       /*宽和高做出来的背景横线*/
+    width: 78%;
+    height: 4px;
+}
+
+.mtitle.five:after{
+    width: 75%;
+}
+.mtitle.six:after{
+    width: 71%;
+}
+
+.shadow{
+    position: fixed;
+    left: 0;
+    top: 0;
+    width:100%;
+    height:100%;
+    background: rgba(0,0,0,.3);
+    z-index: 5;
+}
+
+.enlarge{
+    cursor: pointer;
+    transition: all 0.5s;
+}
+.enlarge:hover{
+    transform:rotate(0deg);
+    transform:scale(1.05);//设置缩放比例
+-ms-transform:scale(1.05);
+    -webkit-transform:scale(1.05);
+    -o-transform:scale(1.05);
+    -moz-transform:scale(1.05);
+    box-shadow:0px 0px 50px rgba(0,0,0,0.5);
+    border: none;
+    border-radius: 10px;
+}

@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <link rel="icon" href="../image/web/favicon.ico" type="image/ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="../vendors/bootstrap/bootstrap-3.3.7/css/bootstrap.min.css">
+    <script type="text/javascript" src="../vendors/jquery/jquery-3.3.1/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="../vendors/bootstrap/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../vendors/angular/angular-1.4.6/angular.min.js"></script>
+
+
+    <link rel="stylesheet" type="text/css" href="../css/web/common.css">
+    <link rel="stylesheet" type="text/css" href="../css/web/main.css">
+    <script type="text/javascript">
+        var app = angular.module('myApp',[]);
+        app.controller('myCtrl', function($scope,$http) {
+            $scope.recoList=[
+                {
+                    img:"../image/web/index_01_house01.png",
+                    name:"东角头店",
+                    type:"八人间",
+                    price:"600",
+                    desc:"区位便捷 配置齐全",
+                    address:"蛇口2号线东角头站B出口"
+                },
+                {
+                    img:"../image/web/index_01_house02.png",
+                    name:"四海店",
+                    type:"六人间",
+                    price:"700",
+                    desc:"区位便捷 配置齐全",
+                    address:"南山区光大路8号"
+                },
+                {
+                    img:"../image/web/index_01_house03.png",
+                    name:"龙井店",
+                    type:"四人间",
+                    price:"900",
+                    desc:"区位便捷 配置齐全",
+                    address:"南山区西丽新屋村工业区4栋"
+                },
+                {
+                    img:"../image/web/index_01_house04.png",
+                    name:"大冲店",
+                    type:"单人间",
+                    price:"2800",
+                    desc:"区位便捷 配置齐全",
+                    address:"南山区高新科技园大冲店"
+                },
+            ]
+
+            $scope.designList = [
+                {
+                    img:"../image/web/index_01_design01.png",
+                    desc:"镀锌钢材上下床",
+                },
+                {
+                    img:"../image/web/index_01_design02.png",
+                    desc:"舒适透气厚床垫",
+                },
+                {
+                    img:"../image/web/index_01_design03.png",
+                    desc:"私人密码储物柜",
+                },
+                {
+                    img:"../image/web/index_01_design04.png",
+                    desc:"防潮坚固玻化砖",
+                },
+            ]
+            $scope.showMore = function (pickItem) {
+                //console.log(pickItem.address);
+                //window.location.href="reserve.html";
+                var param = "name="+pickItem.name+"&address="+pickItem.address+"&type="+pickItem.type;
+                window.open("reserve.html?"+encodeURI(param),"_blank")
+            }
+
+            $scope.showDetail = function (index) {
+                $("[id=detail"+index+"]").show();
+                $("[id=mbottom"+index+"]").hide()
+            }
+
+            $scope.showBottom = function (index) {
+                $("[id=mbottom"+index+"]").show();
+                $("[id=detail"+index+"]").hide()
+            }
+
+            $scope.showDesc = function (index) {
+                $("[id=desc"+index+"]").show();
+            }
+
+            $scope.hideDesc = function (index) {
+                $("[id=desc"+index+"]").hide()
+            }
+        });
+
+        function pre() {
+            $('#myCarousel').carousel('prev');
+        }
+        function next() {
+            $('#myCarousel').carousel('next');
+        }
+        
+        function mouseover(th,index) {
+            if(index ==1){
+                $(th).find('img').attr("src","../image/web/index_h1_icon01_mouseenter.png")
+
+            }else if(index ==2){
+                $(th).find('img').attr("src","../image/web/index_h1_icon02_mouseenter.png")
+
+            }else if(index == 3){
+                $(th).find('img').attr("src","../image/web/index_h1_icon03_mouseenter.png")
+
+            }
+        }
+        function mouseleave(th,index) {
+            if(index ==1){
+                $(th).find('img').attr("src","../image/web/index_h1_icon01_now.png")
+
+            }else if(index ==2){
+                $(th).find('img').attr("src","../image/web/index_h1_icon02_now.png")
+
+            }else if(index == 3){
+                $(th).find('img').attr("src","../image/web/index_h1_icon03_now.png")
+
+            }
+        }
+
+
+    </script>
+
+
+</head>
+<body>
+
+    <div class="container-fluid" ng-app="myApp" ng-controller="myCtrl">
+
+            <div class="row"  ng-include="'header.html'"></div>
+            <div id="myCarousel" class="row carousel slide" data-ride="carousel">
+                <!-- 轮播（Carousel）指标 -->
+                <!--<ol class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                </ol>-->
+                <!-- 轮播（Carousel）项目 -->
+                <div class="carousel-inner"  >
+                    <div class="item active">
+                        <img src="../image/web/main_banner_1.jpg" alt="First slide">
+                    </div>
+                    <div class="item">
+                        <img src="../image/web/main_banner_2.jpg" alt="Second slide">
+                    </div>
+                    <div class="item">
+                        <img src="../image/web/main_banner_3.jpg" alt="Third slide">
+                    </div>
+                </div>
+                <!-- 轮播（Carousel）导航 -->
+                <input id="carousel_pre" type="button" onclick="pre()"/>
+                <input id="carousel_next" type="button" onclick="next()"/>
+
+                <!--<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>-->
+            </div>
+
+            <div class="row div_block">
+                <img src="../image/web/main_h1.png">
+                <div class="horizontal div_hor_block" id="social">
+                    <div class="img_block myFrame enlarge" onmouseover="mouseover(this,1)" onmouseleave="mouseleave(this,1)">
+                        <img src="../image/web/index_h1_icon01_now.png">
+                        <p>对员工</p>
+                        <p style="font-size: 14px">增强员工对公司和城市的归属感，保证<br>公司人员的稳定性与认同感</p>
+                    </div>
+                    <div class="img_block myFrame enlarge" onmouseover="mouseover(this,2)" onmouseleave="mouseleave(this,2)">
+                        <img src="../image/web/index_h1_icon02_now.png">
+                        <p>对企业</p>
+                        <p style="font-size: 14px">为员工提供满意舒适的居住环境，降低<br>员工离职率，为企业降低管理成本</p>
+                    </div>
+                    <div class="img_block myFrame enlarge" onmouseover="mouseover(this,3)" onmouseleave="mouseleave(this,3)">
+                        <img src="../image/web/index_h1_icon03_now.png">
+                        <p>对政府</p>
+                        <p style="font-size: 14px">专业团队有效解决群租所带来的治安及<br>环境问题，协助政府管理外来人口</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row div_block" style="background-color: #f8f8f8">
+                <a href="cmapartment.html"><img class="enlarge" src="../image/web/main_h2.png"></a>
+                <div class="horizontal div_hor_block">
+                    <div class="img_block enlarge" ng-repeat="x in recoList"
+                         style="background-image: url('{{x.img}}');width:286px;height:278px; padding: 10px"
+                         ng-click="showMore(x)" ng-mouseover="showDetail($index)" ng-mouseleave="showBottom($index)">
+                        <!--<a class="linkImg" ng-click="showMore(x)">
+                            <img src="{{x.img}}">
+                        </a>-->
+                        <div  class="mbottom" id="mbottom{{$index}}">
+                            <div class="horizontal" style="justify-content: space-between;" >
+                                <p>{{x.type}}</p>
+                                <p>¥{{x.price}}月</p>
+                            </div>
+                        </div>
+                        <div class="detail" id="detail{{$index}}" hidden>
+                            <p>{{x.name}}</p>
+                            <p style="font-size: 14px;margin-top: 36px">{{x.type}}</p>
+                            <p style="font-size: 14px">面积：30㎡</p>
+                            <p style="font-size: 14px">{{x.desc}}</p>
+                            <p style="font-size: 14px">{{x.address}}</p>
+                            <div class="horizontal" style="justify-content: space-between" >
+                                <p>{{x.type}}</p>
+                                <p>¥{{x.price}}月</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <p style="margin-top:40px ;font-size: 20px;color: #333333">设计理念</p>
+                <div class="horizontal div_hor_block" >
+                    <div class="img_block enlarge" ng-repeat="x in designList" style="background-image: url('{{x.img}}');width:286px;height:278px; padding: 10px"
+                          ng-mouseover="showDesc($index)" ng-mouseleave="hideDesc($index)" >
+                        <div class="detail" id="desc{{$index}}" hidden>
+                            <p style="margin-top: 100px">{{x.desc}}</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class=" row div_block">
+                <a class="linkImg" href="cmservice.html"><img class="enlarge" src="../image/web/main_h3.png"></a>
+                <div class="horizontal div_hor_block"  id="cmservice" >
+                    <div class="img_block" style="margin-right: 100px">
+                        <img class="enlarge" src="../image/web/index_01_C01.png">
+                        <p style="color: #000000;font-size: 20px">安全 Safety</p>
+                        <p>→ 消防设施完备</p>
+                        <p>→ 智能云丁公寓门锁</p>
+                        <p>→ 定期消防安全演练</p>
+                        <p>→ 24小时驻店管家</p>
+                        <p>→ 48小时年内报修响应</p>
+                    </div>
+                    <div class="img_block" style="margin-right: 100px">
+                        <img class="enlarge" src="../image/web/index_01_C02.png">
+                        <p style="color: #000000;font-size: 24px">卫生 Sanitation</p>
+                        <p>→ 专属洗浴</p>
+                        <p>每间房均配置独立厨卫及洗衣机</p>
+                        <p>→ 干湿分离</p>
+                        <p>洗漱、居住功能分离</p>
+                        <p>→ 定期保洁</p>
+                        <p>每月提供房间免费保洁</p>
+                        <p>每日公共区域免费消毒清洁</p>
+                    </div>
+                    <div class="img_block" style="margin-right: 100px">
+                        <img class="enlarge" src="../image/web/index_01_C03.png">
+                        <p style="color: #000000;font-size: 24px">共享 Share</p>
+                        <p>→ 公共健身区</p>
+                        <p>各类健身设施，篮球、乒乓球场</p>
+                        <p>→ 公共晾晒区</p>
+                        <p>→ 户外规模化晾衣设备</p>
+                        <p>→ 休闲娱乐区</p>
+                        <p>专业代收快递、无人售货机、迷你KTV</p>
+                    </div>
+                    <div class="img_block" >
+                        <img class="enlarge" src="../image/web/index_01_C04.png">
+                        <p style="color: #000000;font-size: 24px">私密 Private</p>
+                        <p>→ 入住登记，信息收录</p>
+                        <p>→ 专属房卡，私有密码</p>
+                        <p>→ 个人空间，独立保险</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class=" row div_block" style="background-color: #f8f8f8">
+                <img src="../image/web/main_h4.png">
+                <div class="horizontal div_hor_block">
+                    <div id="myCarousel1" class="carousel slide enlarge" data-ride="carousel">
+                        <!-- 轮播（Carousel）指标 -->
+                        <!--<ol class="carousel-indicators">
+                            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                            <li data-target="#myCarousel" data-slide-to="1"></li>
+                            <li data-target="#myCarousel" data-slide-to="2"></li>
+                        </ol>-->
+                        <!-- 轮播（Carousel）项目 -->
+                        <div class="carousel-inner"  >
+                            <div class="item active">
+                                <a href="https://mp.weixin.qq.com/s/y4LzmNKKEssycYUgx0hmdg" target="_blank"><img  src="../image/web/index_01_D01.png" alt="First slide"></a>
+                            </div>
+                            <div class="item">
+                                <a href="https://mp.weixin.qq.com/s/0pjLznuXJwxLTqldSxy4-A" target="_blank"><img  src="../image/web/index_01_D01_2.png" alt="Second slide"></a>
+                            </div>
+                            <div class="item">
+                                <a href="https://mp.weixin.qq.com/s/JwZBtSYOl0tS_YrgL8gmpA" target="_blank"><img  src="../image/web/index_01_D01_3.png" alt="Third slide"></a>
+                            </div>
+                        </div>
+                        <!-- 轮播（Carousel）导航 -->
+                    </div>
+                    <div style="margin-left: 20px">
+                        <a href="https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzIxMDk2NzYwMw==&scene=124#wechat_redirect" target="_blank"><img class="enlarge" src="../image/web/index_01_D02.png"></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row div_block">
+               <a href="about_jiageiwo.html"><img class="enlarge" src="../image/web/main_h5.png"></a>
+                <div class="horizontal div_hor_block">
+                    <a href="https://mp.weixin.qq.com/s/810rM5zl-MPmCC5YiLkOag" target="_blank"><img class="enlarge" src="../image/web/index_01_new01.png" style="margin-right: 20px"></a>
+                    <a href="coopertaion.html"><img class="enlarge" src="../image/web/index_01_join01.png" style="margin-right: 20px"></a>
+                    <a href="recruitment.html"><img class="enlarge" src="../image/web/index_01_new03.png"></a>
+                </div>
+            </div>
+            <div class="row"  ng-include="'footer.html'">
+            </div>
+
+    </div>
+
+</body>
+</html>

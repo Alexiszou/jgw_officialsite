@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>诚聘英才</title>
+    <link rel="icon" href="../image/web/favicon.ico" type="image/ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="../vendors/bootstrap/bootstrap-3.3.7/css/bootstrap.min.css">
+    <script type="text/javascript" src="../vendors/jquery/jquery-3.3.1/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="../vendors/bootstrap/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../vendors/angular/angular-1.4.6/angular.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/web/common.css">
+
+
+    <style type="text/css">
+
+        .item{
+            font: 18px/28px MicrosoftYaHei;
+            color: #737373;
+            margin-bottom: 76px;
+            margin-left: 40px;
+        }
+        .no_margin_bottom{
+            margin-bottom: 0px;
+        }
+
+        .itemTitle{
+            font-size:24px;
+            color: #1a1a1a;
+            position: relative;
+
+        }
+        .itemTitle:before{
+            content: '';
+            position: absolute;         /*定位背景横线的位置*/
+            top: 0%;
+            left: -40px;
+            background-image: url("../image/web/index_05_icon01.png");       /*宽和高做出来的背景横线*/
+            width: 28px;
+            height: 28px;
+        }
+
+        .listTitle{
+            color: #1a1a1a;
+            position: relative;
+        }
+        .listTitle:before{
+            content: '';
+            position: absolute;         /*定位背景横线的位置*/
+            top: 0%;
+            left: -40px;
+            background-image: url("../image/web/index_05_icon02.png");       /*宽和高做出来的背景横线*/
+            width: 28px;
+            height: 28px;
+        }
+        #email{
+            background: #ffb901;
+            padding: 0px 20px;
+            border-radius: 50px;
+            color: #ffffff;
+            font: 18px/36px MicrosoftYaHei;
+            margin-bottom: 30px;
+            width: 30%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+    <script type="text/javascript">
+        var app = angular.module('myApp',[]);
+        app.controller('myCtrl', function($scope,$http) {
+
+            $scope.modeList = [
+                {
+                    "title":"厘米公寓运营专员-主管-经理",
+                    "list":[
+                        {
+                            "title":"主要工作内容",
+                            "content":"1、负责向预约上门的客户介绍厘米公寓基本情况，带领客户看房；\n" +
+                            "2、负责租客日常问题处理，如：保洁、维修报单、安排管理、邻里纠纷等；\n" +
+                            "3、协助住客办理退租、转租、续租事宜，保证房间内物品完整；\n"+
+                            "4、维护客户关系，组织租客线下活动，提升租客对厘米公寓的满意度。"
+                        },
+                        {
+                            "title":"资格要求",
+                            "content":"1、大专及以上学历，有公寓管理、物业管理、酒店管理、连锁服务管理等经验优先；\n" +
+                            "2、拥有良好沟通能力与团队意识，强大的执行力；\n" +
+                            "3、较强的内外协调能力，反应灵活;\n"+
+                            "4、熟悉使用辦公室Windows 或WPS软件；\n"+
+                            "5、欢迎优秀应届毕业生应聘。"
+                        },
+                        {
+                            "title":"工作地点",
+                            "content":"深圳市南山区"
+                        },
+                    ]
+                },
+                {
+                    "title":"厘米公寓销售经理",
+                    "list":[
+                        {
+                            "title":"主要工作内容",
+                            "content":"1、负责所属区域的出租房源的采集挖掘与跟进；按照计划完成业务目标；\n" +
+                            "2、负责房屋产品的维护与推广，与所属区域内物业管理公司、房产中介门店等相关合作伙伴保持良好关系；\n" +
+                            "3、带意向租客户看房，促成客户签订租房合同；\n"+
+                            "4、签约后协调房屋配置专员完成业主/客户的需求及其他维护工作；\n"+
+                            "5、完全有机会晋升，成为区域总监，负责区域内所有房源的经营。\n"
+                        },
+                        {
+                            "title":"资格要求",
+                            "content":"1、 学历大专及以上\n" +
+                            "2、对房屋出租市场有一定的了解及资源；\n" +
+                            "3、具备出色的沟通与协调能力、团队合作精神，乐观自信、勇于进取;\n"+
+                            "4、熟练使用office办公软件；工作认真仔细、有耐心；\n"+
+                            "5、富有斗志，能承受一定的工作压力。\n"
+                        },
+                        {
+                            "title":"工作地点",
+                            "content":"深圳市南山区"
+                        },
+                    ]
+                }
+
+            ];
+        });
+    </script>
+</head>
+<body>
+
+<div class="container-fluid" ng-app="myApp" ng-controller="myCtrl">
+        <div class="row" ng-include="'header.html'">
+        </div>
+    <div class="row" style="text-align: center">
+        <img src="../image/web/index_06_banner.jpg">
+    </div>
+        <div class="row myBlock">
+            <p class="mtitle" style="">诚聘英才</p>
+            <div class="myFrame " style="margin-bottom: 50px">
+                <div style="padding: 28px;text-align: left">
+                    <div class="item" ng-class="{no_margin_bottom:$index==modeList.length-1}" ng-repeat="x in modeList">
+                        <p class="itemTitle">{{x.title}}</p>
+                        <div ng-repeat="y in x.list">
+                            <p class="listTitle">{{y.title}}</p>
+                            <p style="white-space: pre;">{{y.content}}<p/>
+                        </div>
+                    </div>
+                </div>
+                <!--<input id="email" type="button" value="投递邮箱：yangzi@jiageiwoo.com">-->
+                <p id="email">投递邮箱：yangzi@jiageiwoo.com</p>
+            </div>
+        </div>
+
+
+
+        <div class="row" ng-include="'footer.html'">
+        </div>
+</div>
+
+</body>
+</html>

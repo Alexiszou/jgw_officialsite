@@ -1,0 +1,50 @@
+.featureItem{
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+    align-items: center;
+    padding: 30px;
+
+}
+
+#servieTenet{
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+    padding: 50px;
+}
+
+#liveService{
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+    padding: 50px;
+}
+
+.img_block{
+    margin-right: 0px;
+}
+.img_block p{
+    font-size: 18px;
+    color: #737373;
+    margin-top: 10px;
+    text-align: center;
+
+}
+
+
+.reserve:hover{
+    color: #ffffff;
+    background: #ffb901;
+    border: 1px solid #ffb901;
+}
+
+.reserve{
+    color: #ffb901;
+    background: transparent;
+    font-size: 18px;
+    padding: 5px 80px;
+    border: 1px solid #ffb901;
+    border-radius: 10px;
+    margin-top:60px ;
+}

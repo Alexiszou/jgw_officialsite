@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>关于家给我</title>
+    <link rel="icon" href="../image/web/favicon.ico" type="image/ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="../vendors/bootstrap/bootstrap-3.3.7/css/bootstrap.min.css">
+    <script type="text/javascript" src="../vendors/jquery/jquery-3.3.1/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="../vendors/bootstrap/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../vendors/angular/angular-1.4.6/angular.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/web/common.css">
+    <!--<link rel="stylesheet" type="text/css" href="../css/web/about_us.css">-->
+    <style type="text/css">
+        /*.story:after{
+            left: 185px;
+        }
+        .culture:after{
+            left: 185px;
+        }
+        .milestone:after{
+            left: 225px;
+        }*/
+
+        .myFrame p{
+            text-align: left;
+            font: 16px/28px MicrosoftYaHei Regular;
+            color: #737373;
+        }
+        /*.myBlock{
+          padding: 30px;
+      }*/
+
+        .cultureContainer{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+        .cultureItem{
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: flex-start;
+            width: 50%;
+            padding: 20px;
+        }
+        .cultureContent{
+            margin-left: 50px;
+        }
+    </style>
+
+    <script type="text/javascript">
+        var app = angular.module('myApp',[]);
+        app.controller('myCtrl', function($scope,$http) {
+
+            $scope.cultureList=[
+                {
+                    "img":"../image/web/index_04_icon01.png",
+                    "title":"企业愿景",
+                    "desc":"规模化体量：数万张床位规模化扩张管理，“城市合伙人计划”加速全国门店网点覆盖",
+                },
+                {
+                    "img":"../image/web/index_04_icon02.png",
+                    "title":"企业价值观",
+                    "desc":"百分之百的正直、承认自己的无知、永怀创业之心、追求共赢共同成功、尊重并照顾好你接触到的人",
+                },
+                {
+                    "img":"../image/web/index_04_icon03.png",
+                    "title":"企业使命",
+                    "desc":"企业员工公寓定制运营商,为年轻人打造理想租房生活，成就美丽精彩人生",
+                },
+                {
+                    "img":"../image/web/index_04_icon04.png",
+                    "title":"企业口号",
+                    "desc":"厘米公寓：离公司最近的家",
+                },
+            ]
+        });
+    </script>
+</head>
+<body>
+
+<div class="container-fluid" ng-app="myApp" ng-controller="myCtrl">
+        <div class="row" ng-include="'header.html'">
+        </div>
+    <div class="row" style="text-align: center">
+        <img src="../image/web/about_us_banner.jpg">
+    </div>
+        <div class="row myBlock" style="margin-bottom: 0px">
+            <a name="story"></a>
+            <p class="mtitle five" >家给我故事</p>
+            <div class="myFrame">
+                <p style="padding: 30px">&nbsp;&nbsp;深圳市家给我网络科技有限公司成立于2016年5月，总部位于深圳市。“家给我“是一家专业从事互联网房屋托管以及租后管理的SAAS平台，
+                    旗下业务有房屋托管、养老公寓、企业员工公寓等。2017年2月获得招商局集团投资。<br>
+                    &nbsp;&nbsp;厘米公寓作为“家给我”旗下产品，是一个致力于为城市奋斗的年轻精英人群提供长足公寓服务的新兴品牌，未来将定位于中中国最具生命
+                    力的特色企业员工公寓，着力为企业员工提供更为全面化、定制化、系统化的大型数据行公寓住宿管理服务，为企业解决招人难、留人难
+                    的问题，根据企业的招聘需求快速响应，为其订制匹配的专业公寓解决方案。
+                </p>
+            </div>
+            <a name="culture"></a>
+            <p class="mtitle five" style="">家给我文化</p>
+            <div class="myFrame cultureContainer">
+                <div class="cultureItem" ng-repeat="x in cultureList">
+                    <img src="{{x.img}}">
+                    <div class="cultureContent">
+                        <p style="font-size: 24px;color: #ffb901">{{x.title}}</p>
+                        <p >{{x.desc}}</p>
+                    </div>
+                </div>
+            </div>
+            <a name="dashiji"></a>
+            <p class="mtitle six" style="">家给我大事记</p>
+
+        </div>
+    <div style="margin-bottom: 50px;text-align: center">
+        <img src="../image/web/dashiji.jpg">
+    </div>
+
+        <div class="row" ng-include="'footer.html'">
+        </div>
+</div>
+
+</body>
+</html>

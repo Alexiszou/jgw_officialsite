@@ -1,0 +1,126 @@
+<reservedialog>
+   <div class="shadow">
+        <div class="mDialog">
+            <a href="javascript:;" style="float: right;" ng-click="closeDialog()">
+                <span class="glyphicon glyphicon-remove"></span>
+            </a>
+            <div style="text-align: center">
+                <img src="../image/web/jiageiwo_yellow.png">
+                <p class="welcome">欢迎入住</p>
+            </div>
+            <form>
+                <!--<div class="input-group">
+                    <span class="input-group-addon">姓名</span>
+                    <input type="text" class="form-control" placeholder="请输入您的姓名">
+                </div>-->
+                <div><span>姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名</span><input type="text"  ng-model="reserver.fullname" placeholder="请输入您的姓名"></div>
+                <div><span>手机号码</span><input type="tel" ng-model="reserver.phone"  placeholder="请输入您的手机号码"></div>
+                <div><span>入住形式</span>
+                    <select id="reserverType">
+                        <option value="0">团体</option>
+                        <option value="1">个人</option>
+
+                    </select>
+                </div>
+                <div><span>入住时间</span><input type="date" ng-model="reserver.date"></div>
+                <div><span>入住门店</span>
+                    <select id="reserverApartment" ng-model="reserverApartment" ng-options="x.name for x in apartmentList">
+                        <!--<option value="0">东角头店</option>
+                        <option value="1">龙井店</option>
+                        <option value="2">四海店</option>
+                        <option value="3">大冲店</option>
+                        <option value="4">车公庙店</option>-->
+                    </select>
+                </div>
+
+            </form>
+            <input class="confirm" type="button" value="立即预约" ng-click="addReserver()">
+        </div>
+   </div>
+</reservedialog>
+
+<link rel="stylesheet" type="text/css" href="../css/web/header.css">
+<style type="text/css">
+
+    .mDialog{
+        width: 35%;
+        height: 70%;
+        margin: 5% auto;
+        background-color: #ffffff;
+        padding: 30px;
+        border-radius: 20px;
+        overflow-y:auto;
+
+    }
+
+    .welcome{
+        margin-top: 30px;
+        margin-bottom: 30px;
+        font-size:24px;
+        color: #737373;
+        position: relative;   /*定位横线（当横线的父元素）*/
+
+    }
+    .welcome:before,.welcome:after{
+        content: '';
+        position: absolute;         /*定位背景横线的位置*/
+        top: 50%;
+        background: #e5d8c7;       /*宽和高做出来的背景横线*/
+        width: 124px;
+        height: 1px;
+    }
+
+    .welcome:before{
+        left: 0;
+    }
+    .welcome:after{
+        right: 0;
+    }
+
+    form div{
+        border: 1px solid #ffb901;
+        border-radius: 10px;
+        margin-bottom: 32px;
+        padding: 0;
+        font-size: 18px;
+        color: #737373;
+    }
+
+    form div span{
+        display: inline-block;
+        background-color: #ffb901;
+        color: white;
+        border-radius: 9px 0 0 9px;
+        padding: 10px 30px;
+
+    }
+    form div input{
+        display: inline-block;
+        border: none;
+        width: 65%;
+        padding: 0 10px;
+    }
+    form div select{
+        display: inline-block;
+        width: 63%;
+        border: none;
+        outline: none;
+        /*很关键：将默认的select选择框样式清除*/
+        /*appearance:none;
+        -moz-appearance:none;
+        -webkit-appearance:none;*/
+    }
+    /*form div select option{
+        color: #ffb901;
+    }*/
+
+    .confirm{
+        background-color: #ffb901;
+        color: #ffffff;
+        border-radius: 10px;
+        width: 100%;
+        outline: none;
+        padding: 10px 0;
+        /*border-color:transparent;*/
+    }
+</style>

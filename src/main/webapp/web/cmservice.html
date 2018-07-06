@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>厘米服务</title>
+    <link rel="icon" href="../image/web/favicon.ico" type="image/ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="../vendors/bootstrap/bootstrap-3.3.7/css/bootstrap.min.css">
+    <script type="text/javascript" src="../vendors/jquery/jquery-3.3.1/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="../vendors/bootstrap/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../vendors/angular/angular-1.4.6/angular.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/web/common.css">
+    <link rel="stylesheet" type="text/css" href="../css/web/cmservice.css">
+    <script type="text/javascript">
+        var app = angular.module('myApp',[]);
+        app.controller('myCtrl', function($scope,$http) {
+            $scope.featureList=[
+                {
+                    "img":"../image/web/index_03_icon01.png",
+                    "title":"公寓式专业规范管理",
+                    "desc":"采用标准化连锁公寓管理模式，多家分店均遵循统一制度灵活管理，并安排驻店管家全天候管理",
+                },
+                {
+                    "img":"../image/web/index_03_icon02.png",
+                    "title":"酒店式严密安防管理",
+                    "desc":"按照星级酒店安防和消防标准配置公寓基础设施，让每一位租客享受最高性价比的星级安防待遇",
+                },
+                {
+                    "img":"../image/web/index_03_icon03.png",
+                    "title":"军校式管家巡防制度",
+                    "desc":"每位驻店管家每周将在固定时间段实行严格的早、中、晚 “三巡防” 制度，以确保租客和公寓安全",
+                },
+                {
+                    "img":"../image/web/index_03_icon04.png",
+                    "title":"保姆式贴心保洁服务",
+                    "desc":"公寓将定期安排保洁及维修上门服务，竭力为每一位租客提供如家般的舒适与温馨",
+                },
+                {
+                    "img":"../image/web/index_03_icon05.png",
+                    "title":"社区式定期租客活动",
+                    "desc":"创建厘米客俱乐部，打造国内首家集休闲娱乐、求职培训、交友旅行的双线活动平台",
+                },
+            ]
+            
+            $scope.showMore = function () {
+                window.open("https://mp.weixin.qq.com/s/4wpxE6hn0eQMNyy88YaraA","_blank")
+            }
+        });
+    </script>
+</head>
+<body>
+
+<div class="container-fluid" ng-app="myApp" ng-controller="myCtrl">
+    <div class="row" ng-include="'header.html'"></div>
+    <div class="row" style="text-align: center">
+        <img src="../image/web/cmservice_banner.jpg">
+    </div>
+        <div class="row myBlock" style="text-align: center">
+            <p class="mtitle">特色服务</p>
+            <div class="myFrame">
+                <div class="featureItem" ng-repeat="x in featureList">
+                    <img class="enlarge" src="{{x.img}}"/>
+                    <div style="width:80%;margin-left: 20px;text-align: left;font-size: 18px;color:#737373;">
+                        <p style="font-size: 24px;color: #1a1a1a;margin-bottom: 30px">{{x.title}}</p>
+                        <p>{{x.desc}}</p>
+                    </div>
+                </div>
+            </div>
+
+            <p class="mtitle">服务宗旨</p>
+            <div class="myFrame" id="servieTenet">
+                <div class="img_block" style="margin-right: 80px">
+                    <img class="enlarge" src="../image/web/index_01_C01.png">
+                    <p style="color: #000000;font-size: 24px">安全 Safety</p>
+                    <p>→ 消防设施完备</p>
+                    <p>→ 智能云丁公寓门锁</p>
+                    <p>→ 定期消防安全演练</p>
+                    <p>→ 24小时驻店管家</p>
+                    <p>→ 48小时年内报修响应</p>
+                </div>
+                <div class="img_block" style="margin-right: 80px">
+                    <img class="enlarge"src="../image/web/index_01_C02.png">
+                    <p style="color: #000000;font-size: 24px">卫生 Sanitation</p>
+                    <p>→ 专属洗浴</p>
+                    <p>每间房均配置独立厨卫及洗衣机</p>
+                    <p>→ 干湿分离</p>
+                    <p>洗漱、居住功能分离</p>
+                    <p>→ 定期保洁</p>
+                    <p>每月提供房间免费保洁</p>
+                    <p>每日公共区域免费消毒清洁</p>
+                </div>
+                <div class="img_block" style="margin-right: 80px">
+                    <img class="enlarge"src="../image/web/index_01_C03.png">
+                    <p style="color: #000000;font-size: 24px">共享 Share</p>
+                    <p>→ 公共健身区</p>
+                    <p>各类健身设施，篮球、乒乓球场</p>
+                    <p>→ 公共晾晒区</p>
+                    <p>→ 户外规模化晾衣设备</p>
+                    <p>→ 休闲娱乐区</p>
+                    <p>专业代收快递、无人售货机、迷你KTV</p>
+                </div>
+                <div class="img_block" >
+                    <img class="enlarge"src="../image/web/index_01_C04.png">
+                    <p style="color: #000000;font-size: 24px">私密 Private</p>
+                    <p>→ 入住登记，信息收录</p>
+                    <p>→ 专属房卡，私有密码</p>
+                    <p>→ 个人空间，独立保险</p>
+                </div>
+            </div>
+
+            <p class="mtitle">生活服务</p>
+            <div class="myFrame " id="liveService">
+                <div>
+                    <a href="https://mp.weixin.qq.com/s/4wpxE6hn0eQMNyy88YaraA" target="_blank"><img class="enlarge" src="../image/web/index_03_guanjia01.png"><br></a>
+                    <a href="https://mp.weixin.qq.com/s/Vt59-jvTHvklLYtswKImXw" target="_blank"><img class="enlarge" style="margin-top: 30px" src="../image/web/index_03_guanjia02.png"></a>
+                </div>
+                <div style="text-align: left;margin-left: 50px">
+                    <p style="font-size: 24px;color: #ffb901">厘米管家</p>
+                    <p style="font-size: 18px; color: #737373;margin-top: 20px">
+                        管家故事<br>
+                        有这么一群人<br>
+                        当你上完一整天的班，身心疲惫的时候，给你准备一段舒缓的音乐、一杯温热的茶水和细细软语轻谈趣事和小委屈<br>
+                        当你闲暇休假时，陪你开黑玩游戏、美甲烘焙小兴趣，登山划船都由你，反正和你在一起<br>
+                        啥？你感冒啦？我有药<br>
+                        啥？你灯泡坏啦？我来换<br>
+                        啥？你快递到了但人不在家？我帮你收好<br>
+                        啥？你一个人睡很冷？我......<br>
+                        你说这是暖男？NONONO，这是厘米管家<br>
+                    </p>
+                    <input class="reserve" style="margin-top: 30px" type="button" value="了解更多" ng-click="showMore()">
+                </div>
+            </div>
+        </div>
+
+        <div class="row" ng-include="'footer.html'">
+        </div>
+</div>
+
+</body>
+</html>

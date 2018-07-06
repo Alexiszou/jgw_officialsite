@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>厘米公寓</title>
+    <link rel="icon" href="../image/web/favicon.ico" type="image/ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="../vendors/bootstrap/bootstrap-3.3.7/css/bootstrap.min.css">
+    <script type="text/javascript" src="../vendors/jquery/jquery-3.3.1/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="../vendors/bootstrap/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../vendors/angular/angular-1.4.6/angular.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/web/common.css">
+    <link rel="stylesheet" type="text/css" href="../css/web/cmapartment.css">
+
+    <script type="text/javascript">
+        var app = angular.module('myApp',[]);
+        app.controller('myCtrl', function($scope,$http) {
+            $scope.pickedList=[
+                {img:"../image/web/index_02_pho01.png",
+                    name:"东角头店",
+                    address:"【南山区蛇口】2号线东角头地铁站B出口",
+                    type:"单人间 | 四人间 | 六人间 | 八人间",
+                    detail:"距离2号线东角头站50米",
+                    desc:[
+                        "离地铁近",
+                        "独立厨卫",
+                    ],
+                    price:"600",
+                },
+                {img:"../image/web/index_02_pho02.png",
+                    name:"龙井店",
+                    address:"【南山区西丽】新屋村工业区4栋",
+                    type:"单人间 | 四人间 | 六人间 | 八人间",
+                    detail:"距离7号线龙井站786米",
+                    desc:[
+                        "离地铁近",
+                        "独立厨卫",
+                    ],
+                    price:"600",
+
+                },
+                {img:"../image/web/index_02_pho03.png",
+                    name:"四海店",
+                    address:"【南山区蛇口】光大路8号四海小区",
+                    type:"单人间 | 四人间 | 六人间 | 八人间",
+                    detail:"距离City花园城100米",
+                    desc:[
+                        "配套齐全",
+                        "独立厨卫",
+                    ],
+                    price:"600",
+                },
+                {img:"../image/web/index_02_pho04.png",
+                    name:"大冲店",
+                    address:"【南山区高新园】大冲水厂对面",
+                    type:"单人间 | 四人间 | 六人间 | 八人间",
+                    detail:"距离1号线高新园站500米",
+                    desc:[
+                        "离地铁近",
+                        "独立厨卫",
+                    ],
+                    price:"600",
+                },
+                {img:"../image/web/index_02_pho05.png",
+                    name:"车公庙店",
+                    address:"【福田区车公庙】泰然九路21号",
+                    type:"单人间 | 四人间 | 六人间 | 八人间",
+                    detail:"距离1号线车公庙站600米",
+                    desc:[
+                        "离地铁近",
+                        "独立厨卫",
+                    ],
+                    price:"600",
+                },
+            ];
+
+
+
+            $scope.recoList=[
+                {
+                    name:"东角头店",
+                    img:"../image/web/index_01_house01.png",
+                    address:"蛇口2号线东角头站B出口"
+                },
+                {
+                    name:"四海店",
+                    img:"../image/web/index_01_house02.png",
+                    address:"南山区光大路8号"
+                },
+                {
+                    name:"龙井店",
+                    img:"../image/web/index_01_house03.png",
+                    address:"南山区西丽新屋村工业区4栋"
+                },
+                {
+                    name:"大冲店",
+                    img:"../image/web/index_01_house04.png",
+                    address:"南山区高新科技园大冲店"
+                },
+            ]
+
+            $scope.showMore = function (pickItem) {
+                //console.log(pickItem.address);
+                //window.location.href="reserve.html";
+                var param = "name="+pickItem.name+"&address="+pickItem.address+"&type=四人间"
+               window.open("reserve.html?"+encodeURI(param),"_blank")
+            }
+        });
+
+
+
+        /*$(function ($scope) {
+            $(".pickedItem")[$scope.pickedList.length-1].style.borderBottom="0px"
+            $(".pickedItem")[4].style.paddingBottom="0px"
+        });*/
+    </script>
+</head>
+<body>
+
+<div class="container-fluid" ng-app="myApp" ng-controller="myCtrl">
+        <div class="row" ng-include="'header.html'"></div>
+        <div style="text-align: center">
+            <img src="../image/web/cmapartment_banner.jpg">
+        </div>
+        <div class="row myBlock" >
+            <p class="mtitle">精选房源</p>
+            <div id="picked" class="myFrame">
+                <div class="pickedItem" ng-class="{no_border_bottom:$index==pickedList.length-1}" ng-repeat="x in pickedList" id="pickedItem{{$index}}">
+                    <img class="enlarge" src="{{x.img}}">
+                    <div style="width:40%;margin-left: 20px;text-align: left;font-size: 18px;color:#737373;border-right: 1px solid #dcdcdc;padding-right: 0px">
+                        <p style="font-size: 24px;color: #1a1a1a">厘米公寓·{{x.name}}</p>
+                        <p style="margin-top: 32px">{{x.address}}</p>
+                        <p style="margin-top: 66px">{{x.type}}</p>
+                        <p style="margin-top: 42px;margin-bottom: 20px">{{x.detail}}</p>
+                        <span ng-repeat="y in x.desc">
+                            <span class="desc">{{y}}</span>
+                        </span>
+                    </div>
+                    <div style="margin-left: 100px">
+                        <p style="color: #ffb901;font-size: 36px">¥{{x.price}}
+                            <span style="font-size: 18px;color: #1a1a1a">（每月）起</span></p>
+                        <input class="more" type="button" value="查看更多" ng-click="showMore(x)"/>
+                    </div>
+                </div>
+            </div>
+            <p class="mtitle">精品推荐</p>
+            <div id="recommend">
+                <div id="recoItem" ng-repeat="x in recoList">
+                    <a href="javascript:;" ng-click="showMore(x)"><img class="enlarge" src="{{x.img}}"></a>
+                    <p style="margin-top: 20px">{{x.address}}</p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row"  ng-include="'footer.html'">
+        </div>
+</div>
+
+</body>
+</html>

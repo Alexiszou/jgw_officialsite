@@ -1,0 +1,59 @@
+
+
+.left_side{
+    padding: 0;
+}
+.left_side .left_side_title{
+    background-color: #ffb901;
+    border-radius: 20px 20px 0 0;
+    color: #ffffff;
+    margin-bottom: 0;
+    padding: 5px 24px;
+}
+
+.left_side dt{
+    color: #ffb901;
+    background-color: #eeeeee;
+    padding: 5px 24px;
+}
+.left_side dd{
+    margin-left: 22px;
+    color:#737373;
+    padding: 5px 24px;
+}
+
+.left_side dd a{
+    color:#737373;
+    text-decoration: none;
+}
+.left_side dd a:hover{
+    color:#ffb901;
+    /*text-decoration: none;*/
+}
+
+.left_side dd a.active{
+    color:#ffb901;
+    /*text-decoration: none;*/
+}
+.right_side{
+    margin-left: 40px;
+    color: #737373;
+}
+
+.right_side .right_side_title{
+    color: #ffb901;
+    position: relative;
+    margin-bottom: 30px ;
+    border-bottom: 1px solid #dcdcdc;
+    padding: 0 20px;
+}
+
+.right_side_title:before{
+    content: '';
+    position: absolute;         /*定位背景横线的位置*/
+    top: 5px;
+    left: 0px;
+    background: #ffb901;       /*宽和高做出来的背景横线*/
+    width: 4px;
+    height: 80%;
+}

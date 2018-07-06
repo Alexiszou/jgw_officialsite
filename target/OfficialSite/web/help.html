@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>关于家给我</title>
+    <link rel="icon" href="../image/web/favicon.ico" type="image/ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="../vendors/bootstrap/bootstrap-3.3.7/css/bootstrap.min.css">
+    <script type="text/javascript" src="../vendors/jquery/jquery-3.3.1/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="../vendors/bootstrap/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../vendors/angular/angular-1.4.6/angular.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/web/common.css">
+    <link rel="stylesheet" type="text/css" href="../css/web/help.css">
+
+    <style type="text/css">
+
+    </style>
+    <script type="text/javascript">
+        var app = angular.module('myApp',[]);
+        app.controller('myCtrl', function($scope,$http) {
+            $scope.showContent = function (event) {
+                console.log($(event.target).attr("content"))
+                var id = $(event.target).attr("content");
+                //console.log($("[id^='content']").)
+                show(id);
+            }
+
+        });
+
+        function show(id) {
+            $("[id^='content']").each(function () {
+                //console.log("id:"+$(this).attr("id") )
+                if($(this).attr("id") == id){
+                    $(this).show();
+                    $("[content='"+id+"']").addClass("active")
+                }else{
+                    $(this).hide();
+                    $("[content='"+$(this).attr("id")+"']").removeClass("active")
+                }
+            })
+        }
+        $(function () {
+            console.log(window.location.hash)
+            var hash = window.location.hash;
+            var id = hash.substring(hash.lastIndexOf("\/")+1)
+            show(id);
+        })
+    </script>
+</head>
+<body>
+
+<div class="container-fluid" ng-app="myApp" ng-controller="myCtrl">
+        <div class="row" ng-include="'header.html'">
+        </div>
+
+        <div class="row myBlock">
+            <p class="p3 navTitle">首页>常见问题</p>
+            <div>
+                <div class="col-lg-2 myFrame left_side p3">
+                    <p class="left_side_title">
+                        常见问题
+                    </p>
+                    <dl>
+                        <dt>预约预定</dt>
+                        <dd><a href="javascript:void(0);" content="content1" ng-click="showContent($event)">找房注意事项</a></dd>
+                        <dd><a href="javascript:void(0);" content="content2" ng-click="showContent($event)">预约预定流程</a></dd>
+
+                        <dt>入住需知</dt>
+                        <dd><a href="javascript:void(0);" content="content3" ng-click="showContent($event)">入住需知</a></dd>
+
+                        <dt>租期服务</dt>
+                        <dd><a href="javascript:void(0);" content="content4" ng-click="showContent($event)">租期服务</a></dd>
+
+                        <dt>缴费需知</dt>
+                        <dd><a href="javascript:void(0);" content="content5" ng-click="showContent($event)">缴费需知</a></dd>
+                    </dl>
+                </div>
+                <div class="col-lg-9 right_side p3">
+                    <div id="content1">
+                        <p class="right_side_title p2">找房注意事项</p>
+                        <p>
+                            可通过家给我官网，厘米公寓微信公众号，
+                            按区域或者通过地图找房进行房源查找，或者拨打400客服电话为您找房。
+                        </p>
+                    </div>
+                    <div id="content2" hidden>
+                        <p class="right_side_title p2">预约预定流程</p>
+                        <p>
+                            预约看房：通过官网、微信公众号以及400电话选择预约看房，
+                            留下您的联系电话及预约看房时间即可，管家会在接到预约后第一时间与您联系。
+                        </p>
+                    </div>
+                    <div id="content3" hidden>
+                        <p class="right_side_title p2">入住需知</p>
+                        <p>
+                            1、签合同所需物品：<br>
+                            1.1、携带签约人身份证原件；<br>
+                            1.2、银行卡，一寸免冠照片。<br><br>
+                            2、签合同注意事项：<br>
+                            2.1、仔细阅读合同条款；<br>
+                            2.2、交款后及时索要收据；<br>
+                            2.3、确认房间物品交接完好，如遇问题48小时内及时报修，避免后期纠纷。<br><br>
+                            3、了解公寓日常管理制度。<br>
+                        </p>
+                    </div>
+                    <div id="content4" hidden>
+                        <p class="right_side_title p2">租期服务</p>
+                        <p>
+                            1、贴心管家服务：不管是下雨收衣服，还是寄收快递，只您需要帮助，欢迎随时骚扰；<br><br>
+                            2、早9点至晚21点400电话服务<br><br>
+                            3、维修服务：您可通过门店管家、微信平台、400电话等渠道报修，我们会在接到报修通知后，48小时为您处理。<br><br>
+                            4、保洁服务<br>
+                            4-1、在您入住时，公寓提供一次免费的入户保洁；<br>
+                            4-2、日常生活中，公寓为您提供有偿保洁服务（具体费用与标准以每个门店为准）。 <br>
+                        </p>
+                    </div>
+                    <div id="content5" hidden>
+                        <p class="right_side_title p2">缴费需知</p>
+                        <p>
+                            1、缴费注意事项<br>
+                            1.1、缴纳水电费后，要确认水电表数值是否正确；<br>
+                            1.2、缴费后及时索要收据；<br>
+                            1.3、水电费可联系公寓管家缴费。<br><br>
+                            2、支付方式<br>
+                            2.1、门店支付：可通过微信、支付宝支付。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div  class="row" ng-include="'footer.html'">
+        </div>
+    
+</div>
+
+</body>
+</html>

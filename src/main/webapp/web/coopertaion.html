@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>合作加盟</title>
+    <link rel="icon" href="../image/web/favicon.ico" type="image/ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="../vendors/bootstrap/bootstrap-3.3.7/css/bootstrap.min.css">
+    <script type="text/javascript" src="../vendors/jquery/jquery-3.3.1/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="../vendors/bootstrap/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../vendors/angular/angular-1.4.6/angular.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/web/common.css">
+
+
+    <style type="text/css">
+
+        .item{
+            font: 18px/28px MicrosoftYaHei Bold;
+            color: #737373;
+            margin-bottom: 76px;
+            margin-left: 40px;
+        }
+        .no_margin_bottom{
+            margin-bottom: 0px;
+        }
+
+        .itemTitle{
+            font-size:24px;
+            color: #1a1a1a;
+            position: relative;
+
+        }
+        .itemTitle:before{
+            content: '';
+            position: absolute;         /*定位背景横线的位置*/
+            top: 0%;
+            left: -40px;
+            background-image: url("../image/web/index_05_icon01.png");       /*宽和高做出来的背景横线*/
+            width: 28px;
+            height: 28px;
+        }
+
+        .listTitle{
+            color: #1a1a1a;
+            position: relative;
+        }
+        .listTitle:before{
+            content: '';
+            position: absolute;         /*定位背景横线的位置*/
+            top: 0%;
+            left: -40px;
+            background-image: url("../image/web/index_05_icon02.png");       /*宽和高做出来的背景横线*/
+            width: 28px;
+            height: 28px;
+        }
+    </style>
+    <script type="text/javascript">
+        var app = angular.module('myApp',[]);
+        app.controller('myCtrl', function($scope,$http) {
+
+            $scope.modeList = [
+                {
+                    "title":"直营公寓模式",
+                    "list":[
+                        {
+                            "title":"物业获取：",
+                            "content":"商业性物业改造；\n" +
+                            "原有酒店改造；\n" +
+                            "政府允许其他性质的物业改造。"
+                        },
+                        {
+                            "title":"增值服务：",
+                            "content":"快递代收、无人售货机、迷你KTV等便民服务；\n" +
+                            "设立健身房、书吧、小球场、奶茶厅等公共设施；\n" +
+                            "厘米客俱乐部所开展的各项活动。"
+                        },
+                    ]
+                },
+                {
+                    "title":"物业托管模式",
+                    "list":[
+                        {
+                            "title":"与事业单位的委托管理：",
+                            "content":"医院、学校类事业型单位自由宿舍；\n" +
+                            "厘米公寓提供设计及施工改造；\n" +
+                            "厘米公寓输出专业运营服务及管理。"
+                        },
+                        {
+                            "title":"与企业方的管理：",
+                            "content":"企业方自有宿舍，但缺乏运营管理经验；\n" +
+                            "厘米公寓根据企业需求提供设计及施工改造方案；\n" +
+                            "厘米公寓输出专业运营服务及管理。"
+                        },
+                        {
+                            "title":"与园区合作经营：",
+                            "content":"园区投入自建资金；\n" +
+                            "双方合资投入资金；\n" +
+                            "厘米公寓输出运营管理及增值服务。"
+                        },
+                    ]
+                },
+                {
+                    "title":"定制物业模式",
+                    "list":[
+                        {
+                            "title":"厘米公寓可根据企业自身需求定制物业产品及服务：",
+                            "content":"企业文化产品的定制：根据企业需求来定制、设计租住产品及文化；\n" +
+                            "公共区域理念的定制：可根据企业员工需求定制公共区域服务模式；\n" +
+                            "社区增值服务定制：按企业深度需求定制社区化的概念运营服务及产品。"
+                        },
+                    ]
+                },
+
+            ];
+        });
+    </script>
+</head>
+<body>
+
+<div class="container-fluid" ng-app="myApp" ng-controller="myCtrl">
+        <div class="row" ng-include="'header.html'"></div>
+    <div class="row" style="text-align: center">
+        <img src="../image/web/index_05_banner01.jpg">
+    </div>
+        <div class="row myBlock">
+            <p class="mtitle" style="">合作加盟</p>
+            <div class="myFrame " style="margin-bottom: 50px">
+                <div style="padding: 28px;text-align: left">
+                    <div class="item" ng-class="{no_margin_bottom:$index==modeList.length-1}" ng-repeat="x in modeList">
+                        <p class="itemTitle">{{x.title}}</p>
+                        <div ng-repeat="y in x.list">
+                            <p class="listTitle">{{y.title}}</p>
+                            <p style="white-space: pre;">{{y.content}}<p/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="row" ng-include="'footer.html'">
+        </div>
+</div>
+
+</body>
+</html>
