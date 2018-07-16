@@ -46,6 +46,37 @@
                 window.open("https://mp.weixin.qq.com/s/4wpxE6hn0eQMNyy88YaraA","_blank")
             }
         });
+
+        function serviceMouseover(th,index) {
+            if(index ==1){
+                $(th).attr("src","../image/web/index_03_C01.png")
+
+            }else if(index ==2){
+                $(th).attr("src","../image/web/index_03_C02.png")
+
+            }else if(index == 3){
+                $(th).attr("src","../image/web/index_03_C03.png")
+
+            }else if(index == 4){
+                $(th).attr("src","../image/web/index_03_C04.png")
+
+            }
+        }
+        function serviceMouseleave(th,index) {
+            if(index ==1){
+                $(th).attr("src","../image/web/index_01_C01.png")
+
+            }else if(index ==2){
+                $(th).attr("src","../image/web/index_01_C02.png")
+
+            }else if(index == 3){
+                $(th).attr("src","../image/web/index_01_C03.png")
+
+            }else if(index == 4){
+                $(th).attr("src","../image/web/index_01_C04.png")
+
+            }
+        }
     </script>
 </head>
 <body>
@@ -59,7 +90,7 @@
             <p class="mtitle">特色服务</p>
             <div class="myFrame">
                 <div class="featureItem" ng-repeat="x in featureList">
-                    <img class="enlarge" src="{{x.img}}"/>
+                    <img  src="{{x.img}}"/>
                     <div style="width:80%;margin-left: 20px;text-align: left;font-size: 18px;color:#737373;">
                         <p style="font-size: 24px;color: #1a1a1a;margin-bottom: 30px">{{x.title}}</p>
                         <p>{{x.desc}}</p>
@@ -70,7 +101,9 @@
             <p class="mtitle">服务宗旨</p>
             <div class="myFrame" id="servieTenet">
                 <div class="img_block" style="margin-right: 80px">
-                    <img class="enlarge" src="../image/web/index_01_C01.png">
+                    <img  src="../image/web/index_01_C01.png"
+                          style="width:174px;height: 174px"
+                          onmouseover="serviceMouseover(this,1)" onmouseleave="serviceMouseleave(this,1)">
                     <p style="color: #000000;font-size: 24px">安全 Safety</p>
                     <p>→ 消防设施完备</p>
                     <p>→ 智能云丁公寓门锁</p>
@@ -79,7 +112,9 @@
                     <p>→ 48小时年内报修响应</p>
                 </div>
                 <div class="img_block" style="margin-right: 80px">
-                    <img class="enlarge"src="../image/web/index_01_C02.png">
+                    <img src="../image/web/index_01_C02.png"
+                         style="width:174px;height: 174px"
+                         onmouseover="serviceMouseover(this,2)" onmouseleave="serviceMouseleave(this,2)">
                     <p style="color: #000000;font-size: 24px">卫生 Sanitation</p>
                     <p>→ 专属洗浴</p>
                     <p>每间房均配置独立厨卫及洗衣机</p>
@@ -90,7 +125,9 @@
                     <p>每日公共区域免费消毒清洁</p>
                 </div>
                 <div class="img_block" style="margin-right: 80px">
-                    <img class="enlarge"src="../image/web/index_01_C03.png">
+                    <img src="../image/web/index_01_C03.png"
+                         style="width:174px;height: 174px"
+                         onmouseover="serviceMouseover(this,3)" onmouseleave="serviceMouseleave(this,3)">
                     <p style="color: #000000;font-size: 24px">共享 Share</p>
                     <p>→ 公共健身区</p>
                     <p>各类健身设施，篮球、乒乓球场</p>
@@ -100,7 +137,9 @@
                     <p>专业代收快递、无人售货机、迷你KTV</p>
                 </div>
                 <div class="img_block" >
-                    <img class="enlarge"src="../image/web/index_01_C04.png">
+                    <img src="../image/web/index_01_C04.png"
+                         style="width:174px;height: 174px"
+                         onmouseover="serviceMouseover(this,4)" onmouseleave="serviceMouseleave(this,4)">
                     <p style="color: #000000;font-size: 24px">私密 Private</p>
                     <p>→ 入住登记，信息收录</p>
                     <p>→ 专属房卡，私有密码</p>

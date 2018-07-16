@@ -20,10 +20,13 @@ header div ul{
     align-items: center;
     justify-content: space-around;
     color: #ffffff;
-    margin: 20px;
+    margin: 20px 0;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ceced2;
 }
 .dropdown a{
     font-size: 24px;
+    color: #333333
 }
 header div ul li a.active{
     color: #ffb901 ;
@@ -31,7 +34,7 @@ header div ul li a.active{
 
 header div ul a{
     font-size:20px;
-    color: #151515
+    color: #333333
 }
 
 header div ul div a{

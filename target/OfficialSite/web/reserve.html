@@ -226,7 +226,7 @@
             $scope.showReserveDialog = function () {
                 $("#reserveDialog").show();
             }
-            $scope.closeDialog = function () {
+            /*$scope.closeDialog = function () {
                 $("#reserveDialog").hide();
             }
             $scope.reserver = {
@@ -260,16 +260,16 @@
                     });
             }
 
-            /*var map = {
+            /!*var map = {
                 id:1
-            }*/
+            }*!/
 
             httpRequest($http,METHOD_GET,'/apartment',null,null,CONTENT_TYPE_STRING,
                 function callback(data){
                     $scope.apartmentList = data;
                     $scope.reserverApartment = data[0];
                 });
-
+*/
         });
 
 
@@ -314,7 +314,7 @@
     <div class="row" ng-include="'header.html'"></div>
 
     <div class="row myBlock">
-        <p id="navTitle" class="p3 navTitle">首页>{{reserveItem.apartName}}>{{reserveItem.branchName}}>{{reserveType.name}}</p>
+        <p id="navTitle" class="p3 navTitle"><a href="index.html">首页</a>><a href="cmapartment.html">{{reserveItem.apartName}}</a>>{{reserveItem.branchName}}>{{reserveType.name}}</p>
         <div class="myFrame horizontal" style="justify-content: flex-start;padding: 0px 10px;border-radius: 10px">
             <p class="p2">居室：</p>
             <ul class="horizontal houseType">
@@ -371,7 +371,7 @@
         <p class="mtitle">房屋配置</p>
         <div class="horizontal" style="justify-content:flex-start;flex-wrap: wrap;text-align: center">
             <div style="margin-right: 5px" ng-repeat="x in furnitureList">
-                <img class="enlarge" src="{{x.img}}">
+                <img  src="{{x.img}}">
                 <p style="color: #737373">{{x.name}}</p>
             </div>
         </div>
@@ -393,7 +393,7 @@
     <!--<input ng-model="user.fullname" type="text">
     <button ng-click="addReserve()">add</button>-->
     <div class="row" ng-include="'footer.html'" ></div>
-    <div id="reserveDialog" ng-include="'reservedialog.html'" hidden></div>
+    <!--<div id="reserveDialog" ng-include="'reservedialog.html'" hidden></div>-->
 
 
 </div>

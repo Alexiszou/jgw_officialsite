@@ -1,30 +1,31 @@
-<reservedialog>
+<reservedialog id="reservedialog" >
    <div class="shadow">
         <div class="mDialog">
-            <a href="javascript:;" style="float: right;" ng-click="closeDialog()">
+            <a href="javascript:;" style="float: right;" onclick="closeDialog()">
                 <span class="glyphicon glyphicon-remove"></span>
             </a>
             <div style="text-align: center">
                 <img src="../image/web/jiageiwo_yellow.png">
                 <p class="welcome">欢迎入住</p>
             </div>
+            <div id="form">
             <form>
                 <!--<div class="input-group">
                     <span class="input-group-addon">姓名</span>
                     <input type="text" class="form-control" placeholder="请输入您的姓名">
                 </div>-->
-                <div><span>姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名</span><input type="text"  ng-model="reserver.fullname" placeholder="请输入您的姓名"></div>
-                <div><span>手机号码</span><input type="tel" ng-model="reserver.phone"  placeholder="请输入您的手机号码"></div>
+                <div><span>姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名</span><input type="text"  name="fullname" id="fullname" placeholder="请输入您的姓名"></div>
+                <div><span>手机号码</span><input type="tel" name="phone" id="phone" placeholder="请输入您的手机号码"></div>
                 <div><span>入住形式</span>
-                    <select id="reserverType">
+                    <select id="reserverType" name="type">
                         <option value="0">团体</option>
                         <option value="1">个人</option>
 
                     </select>
                 </div>
-                <div><span>入住时间</span><input type="date" ng-model="reserver.date"></div>
+                <div><span>入住时间</span><input type="date" id="date" name="date"></div>
                 <div><span>入住门店</span>
-                    <select id="reserverApartment" ng-model="reserverApartment" ng-options="x.name for x in apartmentList">
+                    <select id="reserverApartment" name="apartment" >
                         <!--<option value="0">东角头店</option>
                         <option value="1">龙井店</option>
                         <option value="2">四海店</option>
@@ -34,7 +35,8 @@
                 </div>
 
             </form>
-            <input class="confirm" type="button" value="立即预约" ng-click="addReserver()">
+            <input class="confirm" type="button" value="立即预约" onclick="addReserver()">
+            </div>
         </div>
    </div>
 </reservedialog>
@@ -49,7 +51,7 @@
         background-color: #ffffff;
         padding: 30px;
         border-radius: 20px;
-        overflow-y:auto;
+
 
     }
 
@@ -77,6 +79,11 @@
         right: 0;
     }
 
+    #form{
+        width: 100%;
+        height:65%;
+        overflow-y:auto;
+    }
     form div{
         border: 1px solid #ffb901;
         border-radius: 10px;
@@ -124,3 +131,94 @@
         /*border-color:transparent;*/
     }
 </style>
+
+<script type="text/javascript">
+    function closeDialog() {
+        $("#reserveDialog").hide();
+    }
+
+    function getApartment() {
+        $.ajax({
+            //几个参数需要注意一下
+            type: "GET",//方法类型
+            dataType: "json",//预期服务器返回的数据类型
+            url: "/apartment" ,//url
+            success: function (result) {
+                console.log(result);//打印服务端返回的数据(调试用)
+                if (result.resultCode == 200) {
+                    for(var i=0;i<result.data.length;i++) {
+                        $("#reserverApartment").append('<option value='+result.data[i].value+'>' + result.data[i].name + '</option>');
+                    }
+                }else{
+                    alert(result.message);
+                }
+
+            },
+            error : function(result) {
+                console.log(result);
+                alert("网络异常！");
+            }
+        });
+    }
+
+    function  addReserver() {
+        if($("#fullname").val() == null || $("#fullname").val().trim() == ""){
+            alert("请输入姓名");
+            return;
+        }
+
+        if($("#phone").val()  == null || $("#phone").val() .trim() == ""){
+            alert("请输入手机号码");
+            return;
+        }
+
+        if($("#date").val()  == null || $("#date").val() .trim() == ""){
+            alert("请输入入住时间");
+            return;
+        }
+        $.ajax({
+            //几个参数需要注意一下
+            type: "POST",//方法类型
+            dataType: "json",//预期服务器返回的数据类型
+            url: "/reserve" ,//url
+            data:JSON.stringify($('form').serializeObject()),
+            contentType:"application/json;charset=utf-8",
+            success: function (result) {
+                console.log(result);//打印服务端返回的数据(调试用)
+                if (result.resultCode == 200) {
+                    closeDialog()
+                    alert("预约成功，稍后会有客服人员联系您，请保持电话畅通。")
+                }else{
+                    alert(result.message);
+                }
+
+            },
+            error : function(result) {
+                console.log(result);
+                alert("网络异常！");
+                ;
+            }
+        });
+    }
+    $(function () {
+        getApartment();
+    })
+
+
+    $.fn.serializeObject = function() {
+        var o = {};
+        var a = this.serializeArray();
+        $.each(a, function () {
+            if (o[this.name]) {
+                if (!o[this.name].push) {
+                    o[this.name] = [o[this.name]];
+                }
+                o[this.name].push(this.value || '');
+            } else {
+                o[this.name] = this.value || '';
+            }
+        });
+        return o;
+    }
+
+</script>

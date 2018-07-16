@@ -181,3 +181,36 @@ input{
     border: none;
     border-radius: 10px;
 }
+
+
+
+#carousel_pre ,#carousel_next{
+    outline: none;
+    width:48px;
+    height:68px;
+    border:0px;
+    cursor:pointer;
+    position:absolute;
+    top:50%;
+    z-index:5;
+    display:inline-block;
+    margin-top:-34px;
+}
+
+#carousel_pre{
+    left: 50px;
+    background: url("../../image/web/banner_left_normal.png");
+}
+
+#carousel_next{
+    right: 50px;
+    background: url("../../image/web/banner_right_normal.png");
+}
+#carousel_pre:hover{
+    background: url("../../image/web/banner_left_pressed.png");
+
+}
+#carousel_next:hover{
+    background: url("../../image/web/banner_right_pressed.png");
+
+}

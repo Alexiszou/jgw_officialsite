@@ -3,6 +3,13 @@ function getUrlParam(name) {
     var r = window.location.search.substr(1).match(reg);
     if (r!=null) return (r[2]); return null;
 }
+
+function pre() {
+    $('#myCarousel').carousel('prev');
+}
+function next() {
+    $('#myCarousel').carousel('next');
+}
 var METHOD_GET = "GET",METHOD_POST = "POST",METHOD_PUT ="PUT",METHOD_DELETE = "DELETE";
 var CONTENT_TYPE_STRING = "application/x-www-form-urlencoded",CONTENT_TYPE_JSON = "application/json";
 var SUCCESS_REUSLE_CODE = 200,FAIL_RESULT_CODE = 500;
@@ -62,38 +69,38 @@ var reserveList = [
         "type":[
             {
                 "name":"单人间",
-                "price":"900",
-                "images":["../image/web/index_house_06.jpg",
-                    "../image/web/index_house_07.jpg",
-                    "../image/web/index_house_08.jpg",
-                    "../image/web/index_house_09.jpg",
+                "price":"2800",
+                "images":["../image/web/index_house1_1.jpg",
+                    "../image/web/index_house1_2.jpg",
+                    "../image/web/index_house1_3.jpg",
+                    "../image/web/index_house1_4.jpg",
                 ]
             },
             {
                 "name":"四人间",
                 "price":"900",
-                "images":["../image/web/index_house_06.jpg",
-                    "../image/web/index_house_07.jpg",
-                    "../image/web/index_house_08.jpg",
-                    "../image/web/index_house_09.jpg",
+                "images":["../image/web/index_house4_1.jpg",
+                    "../image/web/index_house4_2.jpg",
+                    "../image/web/index_house4_3.jpg",
+                    "../image/web/index_house4_4.jpg",
                 ]
             },
             {
                 "name":"六人间",
-                "price":"900",
-                "images":["../image/web/index_house_13.jpg",
-                    "../image/web/index_house_14.jpg",
-                    "../image/web/index_house_15.jpg",
-                    "../image/web/index_house_16.jpg",
+                "price":"700",
+                "images":["../image/web/index_house6_1.jpg",
+                    "../image/web/index_house6_2.jpg",
+                    "../image/web/index_house6_3.jpg",
+                    "../image/web/index_house6_4.jpg",
                 ]
             },
             {
                 "name":"八人间",
-                "price":"900",
-                "images":["../image/web/index_house_06.jpg",
-                    "../image/web/index_house_07.jpg",
-                    "../image/web/index_house_08.jpg",
-                    "../image/web/index_house_09.jpg",
+                "price":"600",
+                "images":["../image/web/index_house8_1.jpg",
+                    "../image/web/index_house8_2.jpg",
+                    "../image/web/index_house8_3.jpg",
+                    "../image/web/index_house8_4.jpg",
                 ]
             },
         ]
@@ -112,44 +119,44 @@ var reserveList = [
             "Lat":"22.573661"
         },
         "about":{
-            "around":"小区内配套齐全，吃喝玩乐都可以在小区内解决，银行有工商银行、中国银行、工商银行等等，超市有华润万家，各种小便利店，小区内部配套：儿童游戏室、桌球室、乒乓球室、泳池、健身房、篮球场等等，小区绿化一级棒，晚上乘凉散步尤其舒服。",
-            "traffic":"出小区东门步行就可以到达地铁2号线、东角头站，乘坐地铁出行十分方便，如果近距离出行可以选择小区门口的市政绿色出行自行车，健康环保！"
+            "around":"公寓内配套齐全，吃喝玩乐都可以在公寓周边解决，银行有工商银行、中国银行、招商银行等等，超市有华润万家，各种小便利店，公寓天台长期对厘米客开放，安装各种健身器材，可以露天烧烤等，晚上乘凉散步尤其舒服。",
+            "traffic":"出公寓步行就可以到达地铁7号线龙井站，乘坐地铁出行十分方便，如果近距离出行可以选择公寓门口的共享单车，健康环保！"
         },
         "type":[
             {
                 "name":"单人间",
-                "price":"900",
-                "images":["../image/web/index_house_06.jpg",
-                    "../image/web/index_house_07.jpg",
-                    "../image/web/index_house_08.jpg",
-                    "../image/web/index_house_09.jpg",
+                "price":"2800",
+                "images":["../image/web/index_house1_1.jpg",
+                    "../image/web/index_house1_2.jpg",
+                    "../image/web/index_house1_3.jpg",
+                    "../image/web/index_house1_4.jpg",
                 ]
             },
             {
                 "name":"四人间",
                 "price":"900",
-                "images":["../image/web/index_house_06.jpg",
-                    "../image/web/index_house_07.jpg",
-                    "../image/web/index_house_08.jpg",
-                    "../image/web/index_house_09.jpg",
+                "images":["../image/web/index_house4_1.jpg",
+                    "../image/web/index_house4_2.jpg",
+                    "../image/web/index_house4_3.jpg",
+                    "../image/web/index_house4_4.jpg",
                 ]
             },
             {
                 "name":"六人间",
-                "price":"900",
-                "images":["../image/web/index_house_06.jpg",
-                    "../image/web/index_house_07.jpg",
-                    "../image/web/index_house_08.jpg",
-                    "../image/web/index_house_09.jpg",
+                "price":"700",
+                "images":["../image/web/index_house6_1.jpg",
+                    "../image/web/index_house6_2.jpg",
+                    "../image/web/index_house6_3.jpg",
+                    "../image/web/index_house6_4.jpg",
                 ]
             },
             {
                 "name":"八人间",
-                "price":"900",
-                "images":["../image/web/index_house_06.jpg",
-                    "../image/web/index_house_07.jpg",
-                    "../image/web/index_house_08.jpg",
-                    "../image/web/index_house_09.jpg",
+                "price":"600",
+                "images":["../image/web/index_house8_1.jpg",
+                    "../image/web/index_house8_2.jpg",
+                    "../image/web/index_house8_3.jpg",
+                    "../image/web/index_house8_4.jpg",
                 ]
             },
         ]
@@ -168,44 +175,44 @@ var reserveList = [
             "Lat":"22.506796"
         },
         "about":{
-            "around":"小区内配套齐全，吃喝玩乐都可以在小区内解决，银行有工商银行、中国银行、工商银行等等，超市有华润万家，各种小便利店，小区内部配套：儿童游戏室、桌球室、乒乓球室、泳池、健身房、篮球场等等，小区绿化一级棒，晚上乘凉散步尤其舒服。",
-            "traffic":"出小区东门步行就可以到达地铁2号线、东角头站，乘坐地铁出行十分方便，如果近距离出行可以选择小区门口的市政绿色出行自行车，健康环保！"
+            "around":"公寓内配套齐全，吃喝玩乐都可以在公寓周边解决，配备篮球场等体育设施。银行有工商银行、中国银行、招商银行等等，超市有沃尔玛，各种小便利店。",
+            "traffic":"公寓小区附近公交站有四海站：331路，四海小区站：70路、b817路，爱榕园站：22路、226路、k105路，交通便捷。如果近距离出行可以选择公寓门口的共享单车，健康环保！"
         },
         "type":[
             {
                 "name":"单人间",
-                "price":"900",
-                "images":["../image/web/index_house_06.jpg",
-                    "../image/web/index_house_07.jpg",
-                    "../image/web/index_house_08.jpg",
-                    "../image/web/index_house_09.jpg",
+                "price":"2800",
+                "images":["../image/web/index_house1_1.jpg",
+                    "../image/web/index_house1_2.jpg",
+                    "../image/web/index_house1_3.jpg",
+                    "../image/web/index_house1_4.jpg",
                 ]
             },
             {
                 "name":"四人间",
                 "price":"900",
-                "images":["../image/web/index_house_06.jpg",
-                    "../image/web/index_house_07.jpg",
-                    "../image/web/index_house_08.jpg",
-                    "../image/web/index_house_09.jpg",
+                "images":["../image/web/index_house4_1.jpg",
+                    "../image/web/index_house4_2.jpg",
+                    "../image/web/index_house4_3.jpg",
+                    "../image/web/index_house4_4.jpg",
                 ]
             },
             {
                 "name":"六人间",
-                "price":"900",
-                "images":["../image/web/index_house_06.jpg",
-                    "../image/web/index_house_07.jpg",
-                    "../image/web/index_house_08.jpg",
-                    "../image/web/index_house_09.jpg",
+                "price":"700",
+                "images":["../image/web/index_house6_1.jpg",
+                    "../image/web/index_house6_2.jpg",
+                    "../image/web/index_house6_3.jpg",
+                    "../image/web/index_house6_4.jpg",
                 ]
             },
             {
                 "name":"八人间",
-                "price":"900",
-                "images":["../image/web/index_house_06.jpg",
-                    "../image/web/index_house_07.jpg",
-                    "../image/web/index_house_08.jpg",
-                    "../image/web/index_house_09.jpg",
+                "price":"600",
+                "images":["../image/web/index_house8_1.jpg",
+                    "../image/web/index_house8_2.jpg",
+                    "../image/web/index_house8_3.jpg",
+                    "../image/web/index_house8_4.jpg",
                 ]
             },
         ]
@@ -224,44 +231,44 @@ var reserveList = [
             "Lat":"22.550034"
         },
         "about":{
-            "around":"小区内配套齐全，吃喝玩乐都可以在小区内解决，银行有工商银行、中国银行、工商银行等等，超市有华润万家，各种小便利店，小区内部配套：儿童游戏室、桌球室、乒乓球室、泳池、健身房、篮球场等等，小区绿化一级棒，晚上乘凉散步尤其舒服。",
-            "traffic":"出小区东门步行就可以到达地铁2号线、东角头站，乘坐地铁出行十分方便，如果近距离出行可以选择小区门口的市政绿色出行自行车，健康环保！"
+            "around":"公寓内配套齐全，吃喝玩乐都可以在公寓周边解决，公寓西侧为南山外国语学校，东侧为华润城润府，周边银行有工商银行、中国银行、招商银行等等，距离万象天地400米，购物、休闲娱乐等非常方便。",
+            "traffic":"出公寓步行就可以到达地铁1号线高新园站，乘坐地铁出行十分方便，如果近距离出行可以选择公寓门口的共享单车，健康环保！"
         },
         "type":[
             {
                 "name":"单人间",
-                "price":"900",
-                "images":["../image/web/index_house_06.jpg",
-                    "../image/web/index_house_07.jpg",
-                    "../image/web/index_house_08.jpg",
-                    "../image/web/index_house_09.jpg",
+                "price":"2800",
+                "images":["../image/web/index_house1_1.jpg",
+                    "../image/web/index_house1_2.jpg",
+                    "../image/web/index_house1_3.jpg",
+                    "../image/web/index_house1_4.jpg",
                 ]
             },
             {
                 "name":"四人间",
                 "price":"900",
-                "images":["../image/web/index_house_06.jpg",
-                    "../image/web/index_house_07.jpg",
-                    "../image/web/index_house_08.jpg",
-                    "../image/web/index_house_09.jpg",
+                "images":["../image/web/index_house4_1.jpg",
+                    "../image/web/index_house4_2.jpg",
+                    "../image/web/index_house4_3.jpg",
+                    "../image/web/index_house4_4.jpg",
                 ]
             },
             {
                 "name":"六人间",
-                "price":"900",
-                "images":["../image/web/index_house_06.jpg",
-                    "../image/web/index_house_07.jpg",
-                    "../image/web/index_house_08.jpg",
-                    "../image/web/index_house_09.jpg",
+                "price":"700",
+                "images":["../image/web/index_house6_1.jpg",
+                    "../image/web/index_house6_2.jpg",
+                    "../image/web/index_house6_3.jpg",
+                    "../image/web/index_house6_4.jpg",
                 ]
             },
             {
                 "name":"八人间",
-                "price":"900",
-                "images":["../image/web/index_house_06.jpg",
-                    "../image/web/index_house_07.jpg",
-                    "../image/web/index_house_08.jpg",
-                    "../image/web/index_house_09.jpg",
+                "price":"600",
+                "images":["../image/web/index_house8_1.jpg",
+                    "../image/web/index_house8_2.jpg",
+                    "../image/web/index_house8_3.jpg",
+                    "../image/web/index_house8_4.jpg",
                 ]
             },
         ]
@@ -280,44 +287,100 @@ var reserveList = [
             "Lat":"22.539417"
         },
         "about":{
-            "around":"小区内配套齐全，吃喝玩乐都可以在小区内解决，银行有工商银行、中国银行、工商银行等等，超市有华润万家，各种小便利店，小区内部配套：儿童游戏室、桌球室、乒乓球室、泳池、健身房、篮球场等等，小区绿化一级棒，晚上乘凉散步尤其舒服。",
-            "traffic":"出小区东门步行就可以到达地铁2号线、东角头站，乘坐地铁出行十分方便，如果近距离出行可以选择小区门口的市政绿色出行自行车，健康环保！"
+            "around":"公寓位于皇冠科技园内，周边配套设施齐全，吃喝玩乐都可以在公寓周边解决，公寓南侧为皇冠体育中心，东侧为篮球场，周边银行有工商银行、中国银行、招商银行等等，科技园内购物、休闲娱乐等非常方便。",
+            "traffic":"出公寓步行就可以到达地铁1号线车公庙站，乘坐地铁出行十分方便，如果近距离出行可以选择公寓门口的共享单车，健康环保！"
         },
         "type":[
             {
                 "name":"单人间",
-                "price":"900",
-                "images":["../image/web/index_house_06.jpg",
-                    "../image/web/index_house_07.jpg",
-                    "../image/web/index_house_08.jpg",
-                    "../image/web/index_house_09.jpg",
+                "price":"2800",
+                "images":["../image/web/index_house1_1.jpg",
+                    "../image/web/index_house1_2.jpg",
+                    "../image/web/index_house1_3.jpg",
+                    "../image/web/index_house1_4.jpg",
                 ]
             },
             {
                 "name":"四人间",
                 "price":"900",
-                "images":["../image/web/index_house_06.jpg",
-                    "../image/web/index_house_07.jpg",
-                    "../image/web/index_house_08.jpg",
-                    "../image/web/index_house_09.jpg",
+                "images":["../image/web/index_house4_1.jpg",
+                    "../image/web/index_house4_2.jpg",
+                    "../image/web/index_house4_3.jpg",
+                    "../image/web/index_house4_4.jpg",
                 ]
             },
             {
                 "name":"六人间",
-                "price":"900",
-                "images":["../image/web/index_house_06.jpg",
-                    "../image/web/index_house_07.jpg",
-                    "../image/web/index_house_08.jpg",
-                    "../image/web/index_house_09.jpg",
+                "price":"700",
+                "images":["../image/web/index_house6_1.jpg",
+                    "../image/web/index_house6_2.jpg",
+                    "../image/web/index_house6_3.jpg",
+                    "../image/web/index_house6_4.jpg",
                 ]
             },
             {
                 "name":"八人间",
+                "price":"600",
+                "images":["../image/web/index_house8_1.jpg",
+                    "../image/web/index_house8_2.jpg",
+                    "../image/web/index_house8_3.jpg",
+                    "../image/web/index_house8_4.jpg",
+                ]
+            },
+        ]
+
+    },
+    {
+        "apartName":"厘米公寓",
+        "branchName":"茶光店",
+        "address":"【南山区西丽】珠光北路88号明亮科技园4栋",
+        "desc":["离地铁近","独立卫浴","定期保洁"],
+        "area":"30",
+        "orientation":"朝南",
+        "traffic":"距离7号线茶光站565米",
+        "baiduMap":{
+            "Lng":"114.026735",
+            "Lat":"22.539417"
+        },
+        "about":{
+            "around":"公寓东侧为塘朗山公园，环境优雅、配套齐全，周边银行有工商银行、中国银行、招商银行等等，超市有华润万家，各种小便利店，休闲娱乐都可以在周边解决。",
+            "traffic":"出公寓步行就可以到达地铁7号线茶光站，乘坐地铁出行十分方便，如果近距离出行可以选择公寓门口的共享单车，健康环保"
+        },
+        "type":[
+            {
+                "name":"单人间",
+                "price":"2800",
+                "images":["../image/web/index_house1_1.jpg",
+                    "../image/web/index_house1_2.jpg",
+                    "../image/web/index_house1_3.jpg",
+                    "../image/web/index_house1_4.jpg",
+                ]
+            },
+            {
+                "name":"四人间",
                 "price":"900",
-                "images":["../image/web/index_house_06.jpg",
-                    "../image/web/index_house_07.jpg",
-                    "../image/web/index_house_08.jpg",
-                    "../image/web/index_house_09.jpg",
+                "images":["../image/web/index_house4_1.jpg",
+                    "../image/web/index_house4_2.jpg",
+                    "../image/web/index_house4_3.jpg",
+                    "../image/web/index_house4_4.jpg",
+                ]
+            },
+            {
+                "name":"六人间",
+                "price":"700",
+                "images":["../image/web/index_house6_1.jpg",
+                    "../image/web/index_house6_2.jpg",
+                    "../image/web/index_house6_3.jpg",
+                    "../image/web/index_house6_4.jpg",
+                ]
+            },
+            {
+                "name":"八人间",
+                "price":"600",
+                "images":["../image/web/index_house8_1.jpg",
+                    "../image/web/index_house8_2.jpg",
+                    "../image/web/index_house8_3.jpg",
+                    "../image/web/index_house8_4.jpg",
                 ]
             },
         ]

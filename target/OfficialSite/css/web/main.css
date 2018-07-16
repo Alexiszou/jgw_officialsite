@@ -1,5 +1,5 @@
 
-#carousel_pre ,#carousel_next{
+/*#carousel_pre ,#carousel_next{
     outline: none;
     width:48px;
     height:68px;
@@ -28,7 +28,7 @@
 #carousel_next:hover{
     background: url("../../image/web/banner_right_pressed.png");
 
-}
+}*/
 
 .div_block{
     text-align: center;
