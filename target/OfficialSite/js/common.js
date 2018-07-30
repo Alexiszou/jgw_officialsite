@@ -13,13 +13,14 @@ function next() {
 var METHOD_GET = "GET",METHOD_POST = "POST",METHOD_PUT ="PUT",METHOD_DELETE = "DELETE";
 var CONTENT_TYPE_STRING = "application/x-www-form-urlencoded",CONTENT_TYPE_JSON = "application/json";
 var SUCCESS_REUSLE_CODE = 200,FAIL_RESULT_CODE = 500;
-
+var URL_PREFIX = "https://www.jiageiwoo.com";
 
 
 function httpRequest($http,method,url,data,params,contentType,mySuccessCallback){
     $http({
         method: method,
-        url: url,
+        //url: URL_PREFIX+url,
+        url:url,
         dataType: "json",//预期服务器返回的数据类型
         data:data,
         params:params,
@@ -227,8 +228,8 @@ var reserveList = [
         "orientation":"朝南",
         "traffic":"距离2号线东角头站50米",
         "baiduMap":{
-            "Lng":"113.959853",
-            "Lat":"22.550034"
+            "Lng":"113.958224",
+            "Lat":"22.550043"
         },
         "about":{
             "around":"公寓内配套齐全，吃喝玩乐都可以在公寓周边解决，公寓西侧为南山外国语学校，东侧为华润城润府，周边银行有工商银行、中国银行、招商银行等等，距离万象天地400米，购物、休闲娱乐等非常方便。",
@@ -339,8 +340,8 @@ var reserveList = [
         "orientation":"朝南",
         "traffic":"距离7号线茶光站565米",
         "baiduMap":{
-            "Lng":"114.026735",
-            "Lat":"22.539417"
+            "Lng":"113.964649",
+            "Lat":"22.583576"
         },
         "about":{
             "around":"公寓东侧为塘朗山公园，环境优雅、配套齐全，周边银行有工商银行、中国银行、招商银行等等，超市有华润万家，各种小便利店，休闲娱乐都可以在周边解决。",
@@ -377,10 +378,10 @@ var reserveList = [
             {
                 "name":"八人间",
                 "price":"600",
-                "images":["../image/web/index_house8_1.jpg",
-                    "../image/web/index_house8_2.jpg",
-                    "../image/web/index_house8_3.jpg",
-                    "../image/web/index_house8_4.jpg",
+                "images":["../image/web/chaguang_house8_1.jpg",
+                    "../image/web/chaguang_house8_2.jpg",
+                    "../image/web/chaguang_house8_3.jpg",
+                    "../image/web/chaguang_house8_4.jpg",
                 ]
             },
         ]

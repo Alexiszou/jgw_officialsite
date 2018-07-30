@@ -10,6 +10,7 @@ public class ReserveBean extends CommonBean {
     private int type;
     private Date date;
     private int apartment;
+    private String apartmentName;
 
     public String getFullname() {
         return fullname;
@@ -50,5 +51,13 @@ public class ReserveBean extends CommonBean {
 
     public void setApartment(int apartment) {
         this.apartment = apartment;
+    }
+
+    public String getApartmentName() {
+        return apartmentName;
+    }
+
+    public void setApartmentName(String apartmentName) {
+        this.apartmentName = apartmentName;
     }
 }

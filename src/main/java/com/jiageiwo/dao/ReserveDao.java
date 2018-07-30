@@ -13,4 +13,5 @@ public interface ReserveDao {
     void addReserve(ReserveBean reserve);
 
     List<Apartment> getApartmentList(Map map);
+    List<ReserveBean> getReserveList(Map map);
 }

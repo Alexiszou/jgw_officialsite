@@ -6,6 +6,7 @@ import com.jiageiwo.bean.ReserveBean;
 import com.jiageiwo.common.Result;
 import com.jiageiwo.common.ResultGenerator;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import com.jiageiwo.dao.ReserveDao;
 import com.jiageiwo.utils.CommonUtil;
@@ -46,8 +47,9 @@ public class ReserveController {
 
     @RequestMapping(value="/apartment",method= RequestMethod.GET)
     @ResponseBody
-    public Result getApartmentList(HttpServletRequest request){
+    public Result getApartmentList(HttpServletRequest request, HttpServletResponse response){
 
+        //response.setHeader("Access-Control-Allow-Origin", "*");
         Map map = request.getParameterMap();
 
         //System.out.println(map.toString());
@@ -56,6 +58,23 @@ public class ReserveController {
         //logger.error("genMap:"+CommonUtil.genRequestMap(map));
 
         List list = reserveDao.getApartmentList(CommonUtil.genRequestMap(map));
+
+        return ResultGenerator.genSuccessResult(list);
+    }
+
+    @RequestMapping(value="/reserve",method= RequestMethod.GET)
+    @ResponseBody
+    public Result getReserveList(HttpServletRequest request, HttpServletResponse response){
+
+        //response.setHeader("Access-Control-Allow-Origin", "*");
+        Map map = request.getParameterMap();
+
+        //System.out.println(map.toString());
+
+        logger.debug("genMap:"+CommonUtil.genRequestMap(map));
+        //logger.error("genMap:"+CommonUtil.genRequestMap(map));
+
+        List list = reserveDao.getReserveList(CommonUtil.genRequestMap(map));
 
         return ResultGenerator.genSuccessResult(list);
     }
